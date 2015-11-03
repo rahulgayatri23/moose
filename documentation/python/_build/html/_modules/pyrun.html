@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pyrun &mdash; MOOSE 3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="MOOSE 3.0 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> MOOSE
+        
+
+        
+          
+          <img src="../_static/moose_logo.png" class="logo" />
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../moose_quickstart.html">1. Getting started with python scripting for MOOSE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#introduction">1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#importing-moose-and-accessing-built-in-documentation">1.2. Importing MOOSE and accessing built-in documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#creating-objects-and-traversing-the-object-hierarchy">1.2.1. Creating objects and traversing the object hierarchy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#setting-the-properties-of-elements-accessing-fields">1.3. Setting the properties of elements: accessing fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#putting-them-together-setting-up-connections">1.4. Putting them together: setting up connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#scheduling">1.5. Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#running-the-simulation">1.6. Running the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#some-more-details">1.7. Some more details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#vec-melement-and-element">1.7.1. <code class="docutils literal"><span class="pre">vec</span></code>, <code class="docutils literal"><span class="pre">melement</span></code> and <code class="docutils literal"><span class="pre">element</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#finfos">1.7.2. <code class="docutils literal"><span class="pre">Finfos</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#moving-on">1.8. Moving on</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_cookbook.html">2. MOOSE Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#loading-and-running-models">2.1. Loading and running models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#hello-moose-load-run-and-display-existing-models">2.1.1. Hello, MOOSE: Load, run and display existing models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#the-hodgkin-huxley-demo">2.1.2. The Hodgkin-Huxley demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#start-stop-and-setting-clocks">2.1.3. Start, Stop, and setting clocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#run-python-from-moose">2.1.4. Run Python from MOOSE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#accessing-and-tweaking-parameters">2.1.5. Accessing and tweaking parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#storing-simulation-output">2.1.6. Storing simulation output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#computing-arbitrary-functions-on-the-fly">2.1.7. Computing arbitrary functions on the fly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#solving-arbitrary-differential-equations">2.1.8. Solving arbitrary differential equations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#chemical-signaling-models">2.2. Chemical Signaling models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#running-with-different-numerical-methods">2.2.1. Running with different numerical methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#changing-volumes">2.2.2. Changing volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#feeding-tabulated-input-to-a-model">2.2.3. Feeding tabulated input to a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#finding-steady-states">2.2.4. Finding steady states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#making-a-dose-response-curve">2.2.5. Making a dose-response curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#building-a-chemical-model-from-parts">2.2.6. Building a chemical model from parts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#oscillation-models">2.2.7. Oscillation models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#bistability-models">2.2.8. Bistability models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-models">2.3. Reaction-diffusion models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-transport-in-a-tapering-cylinder">2.3.1. Reaction-diffusion + transport in a tapering cylinder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-turing-model">2.3.2. A Turing model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-spatial-bistable-model">2.3.3. A spatial bistable model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-in-neurons">2.3.4. Reaction-diffusion in neurons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#transport-in-branching-dendritic-tree">2.3.5. Transport in branching dendritic tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#cross-compartment-reaction-systems">2.3.6. Cross-compartment reaction systems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#single-neuron-models">2.4. Single neuron models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#modeling-details">2.4.1. Modeling details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#neuronal-simulations-in-moosegui">2.4.2. Neuronal simulations in MOOSEGUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#demos">2.4.3. Demos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#loading-modifying-saving">2.4.4. Loading, modifying, saving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#explicit-vs-implict-methods">2.4.5. Explicit vs. implict methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#integrate-and-fire-models">2.4.6. Integrate-and-fire models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#the-hh-model">2.4.7. The HH model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#analyzing-spike-trains">2.4.8. Analyzing spike trains</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#network-models">2.5. Network models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#connecting-two-cells-via-a-synapse">2.5.1. Connecting two cells via a synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#plastic-synapse-stdp">2.5.2. Plastic synapse: STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#network-with-ca-based-plasticity">2.5.3. Network with Ca-based plasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#providing-random-input-to-a-cell">2.5.4. Providing random input to a cell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#recurrent-integrate-and-fire-network">2.5.5. Recurrent integrate-and-fire network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#recurrent-integrate-and-fire-network-with-plasticity">2.5.6. Recurrent integrate-and-fire network with plasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-feed-forward-network-with-random-input">2.5.7. A feed-forward network with random input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#using-compartmental-models-in-networks">2.5.8. Using compartmental models in networks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#multiscale-models">2.6. Multiscale models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#single-compartment-multiscale-model">2.6.1. Single-compartment multiscale model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#multi-compartment-multiscale-model">2.6.2. Multi-compartment multiscale model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#graphics">2.7. Graphics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#displaying-time-series-plots">2.7.1. Displaying time-series plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#animation-of-values-along-an-axis">2.7.2. Animation of values along an axis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#using-moogli-widgets-to-display-a-neuron">2.7.3. Using MOOGLI widgets to display a neuron</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_builtins.html">3. MOOSE builtins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_classes.html">4. MOOSE Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_classes.html#alphabetical-listing-of-moose-classes">4.1. Alphabetical listing of moose classes</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">MOOSE</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      
+    <li>pyrun</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for pyrun</h1><div class="highlight"><pre>
+<span class="c"># pyrun.py --- </span>
+<span class="c"># </span>
+<span class="c"># Filename: pyrun.py</span>
+<span class="c"># Description: </span>
+<span class="c"># Author: Subhasis Ray</span>
+<span class="c"># Maintainer: </span>
+<span class="c"># Created: Wed Oct 15 10:14:15 2014 (+0530)</span>
+<span class="c"># Version: </span>
+<span class="c"># Last-Updated: </span>
+<span class="c">#           By: </span>
+<span class="c">#     Update #: 0</span>
+<span class="c"># URL: </span>
+<span class="c"># Keywords: </span>
+<span class="c"># Compatibility: </span>
+<span class="c"># </span>
+<span class="c"># </span>
+
+<span class="c"># Commentary: </span>
+<span class="c"># </span>
+<span class="c"># </span>
+<span class="c"># </span>
+<span class="c"># </span>
+
+<span class="c"># Change log:</span>
+<span class="c"># </span>
+<span class="c"># </span>
+<span class="c"># </span>
+<span class="c"># </span>
+<span class="c"># This program is free software; you can redistribute it and/or</span>
+<span class="c"># modify it under the terms of the GNU General Public License as</span>
+<span class="c"># published by the Free Software Foundation; either version 3, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c"># </span>
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="c"># General Public License for more details.</span>
+<span class="c"># </span>
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program; see the file COPYING.  If not, write to</span>
+<span class="c"># the Free Software Foundation, Inc., 51 Franklin Street, Fifth</span>
+<span class="c"># Floor, Boston, MA 02110-1301, USA.</span>
+<span class="c"># </span>
+<span class="c"># </span>
+
+<span class="c"># Code:</span>
+<span class="sd">&quot;&quot;&quot;You can use the PyRun class to run Python statements from MOOSE at</span>
+<span class="sd">runtime. This opens up many possibilities of interleaving computing in</span>
+<span class="sd">Python and MOOSE. You can also use this for debugging simulations.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">moose</span>
+
+<div class="viewcode-block" id="run_sequence"><a class="viewcode-back" href="../moose_cookbook.html#pyrun.run_sequence">[docs]</a><span class="k">def</span> <span class="nf">run_sequence</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;In this example we demonstrate the use of PyRun objects to execute</span>
+<span class="sd">    Python statements from MOOSE. Here is a couple of fun things to</span>
+<span class="sd">    indicate the power of MOOSE-Python integration.</span>
+
+<span class="sd">    First we create a PyRun object called `Hello`. In its `initString`</span>
+<span class="sd">    we put in Python statements that prints the element&#39;s string</span>
+<span class="sd">    representation using pymoose-API. When ``moose.reinit()`` is</span>
+<span class="sd">    called, this causes MOOSE to execute these Python statements which</span>
+<span class="sd">    include Python calling a MOOSE function</span>
+<span class="sd">    (Python-&gt;MOOSE-&gt;Python-&gt;MOOSE) - isn&#39;t that cool!</span>
+
+<span class="sd">    We also initialize a counter called `hello_count` to 0.</span>
+
+<span class="sd">    The statements in initString gets executed once, when we call</span>
+<span class="sd">    ``moose.reinit()``.</span>
+
+<span class="sd">    In the `runString` we put a couple of print statements to indicate</span>
+<span class="sd">    the name fof the object which is running and the current</span>
+<span class="sd">    count. Then we increase the count directly.</span>
+<span class="sd">    </span>
+<span class="sd">    When we call ``moose.start()``, the `runString` gets executed at</span>
+<span class="sd">    each time step.</span>
+
+<span class="sd">    The other PyRun object we create, is `/World`. In its `initString`</span>
+<span class="sd">    apart from ordinary print statements and initialization, we define</span>
+<span class="sd">    a Python function called ``incr_count``. This silly little</span>
+<span class="sd">    function just increments the global `world_count` by 1. </span>
+
+<span class="sd">    The `runString` for `World` simply calls this function to</span>
+<span class="sd">    increment the count and print it.</span>
+
+<span class="sd">    We may notice that we assign tick 0 to `Hello` and tick 1 to</span>
+<span class="sd">    `World`. Looking at the output, you will realize that the</span>
+<span class="sd">    sequences of the ticks strictly maintain the sequence of</span>
+<span class="sd">    execution.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Neutral</span><span class="p">(</span><span class="s">&#39;/model&#39;</span><span class="p">)</span>
+    <span class="n">hello_runner</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">PyRun</span><span class="p">(</span><span class="s">&#39;/model/Hello&#39;</span><span class="p">)</span>
+    <span class="n">hello_runner</span><span class="o">.</span><span class="n">initString</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">print &#39;Init&#39;, moose.element(&#39;/model/Hello&#39;)</span>
+<span class="s">hello_count = 0</span>
+<span class="s">&quot;&quot;&quot;</span>
+    <span class="n">hello_runner</span><span class="o">.</span><span class="n">runString</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">print &#39;Running Hello&#39;</span>
+<span class="s">print &#39;Hello count =&#39;, hello_count</span>
+<span class="s">hello_count += 1</span>
+<span class="s">&quot;&quot;&quot;</span>
+    <span class="n">hello_runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s">&#39;from datetime import datetime&#39;</span><span class="p">)</span>
+    <span class="n">hello_runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s">&#39;print &quot;Hello: current time:&quot;, datetime.now().isoformat()&#39;</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hello_runner</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s">&#39;process&#39;</span><span class="p">)</span>
+    <span class="n">world_runner</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">PyRun</span><span class="p">(</span><span class="s">&#39;World&#39;</span><span class="p">)</span>
+    <span class="n">world_runner</span><span class="o">.</span><span class="n">initString</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">print &#39;Init World&#39;</span>
+<span class="s">world_count = 0</span>
+<span class="s">def incr_count():</span>
+<span class="s">    global world_count</span>
+<span class="s">    world_count += 1</span>
+<span class="s">&quot;&quot;&quot;</span>
+    <span class="n">world_runner</span><span class="o">.</span><span class="n">runString</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">print &#39;Running World&#39;</span>
+<span class="s">print &#39;World count =&#39;, world_count</span>
+<span class="s">incr_count()</span>
+<span class="s">&quot;&quot;&quot;</span>
+    <span class="n">world_runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s">&#39;from datetime import datetime&#39;</span><span class="p">)</span>
+    <span class="n">world_runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s">&#39;print &quot;World: current time:&quot;, datetime.now().isoformat()&#39;</span><span class="p">)</span>
+    
+    <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">world_runner</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s">&#39;process&#39;</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">reinit</span><span class="p">()</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+
+    </div>
+<div class="viewcode-block" id="input_output"><a class="viewcode-back" href="../moose_cookbook.html#pyrun.input_output">[docs]</a><span class="k">def</span> <span class="nf">input_output</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;The PyRun class can take a double input through `trigger`</span>
+<span class="sd">    field. Whenever another object sends an input to this field, the</span>
+<span class="sd">    `runString` is executed.</span>
+
+<span class="sd">    The fun part of this is that you can use the input value in your</span>
+<span class="sd">    python statements in `runString`. This is stored in a local</span>
+<span class="sd">    variable called `input_`. You can rename this by setting `inputVar`</span>
+<span class="sd">    field.</span>
+
+<span class="sd">    Things become even more interesting when you can send out a value</span>
+<span class="sd">    computed using Python. PyRun objects allow you to define a local</span>
+<span class="sd">    variable called `output` and whatever value you assign to this,</span>
+<span class="sd">    will be sent out through the source field `output` on successful</span>
+<span class="sd">    execution of the `runString`.</span>
+
+<span class="sd">    You can rename the output variable by setting `outputVar` field.</span>
+
+<span class="sd">    In this example, we send the output of a pulsegen object sending</span>
+<span class="sd">    out the values 1, 2, 3 during each pulse and compute the square of</span>
+<span class="sd">    these numbers in Python and set output to this square.</span>
+
+<span class="sd">    The calculated value is assigned to the `output` variable and in</span>
+<span class="sd">    turn sent out to a Table object&#39;s input and gets recorded.</span>
+
+<span class="sd">    By default PyRun executes the `runString` whenever a `trigger`</span>
+<span class="sd">    message is received and when its process method is called at each</span>
+<span class="sd">    timestep. In both cases it sends out the `output` value. Since</span>
+<span class="sd">    this may cause inaccuracies depending on what the Python</span>
+<span class="sd">    statements in `runString` do, a `mode` can be specified to disable</span>
+<span class="sd">    one of the above. We set ``mode = 2`` to disable the `process`</span>
+<span class="sd">    method. Note that this could also have been done by setting its</span>
+<span class="sd">    ``tick = -1``.</span>
+<span class="sd">    </span>
+<span class="sd">    ``mode = 1`` will disable `trigger` message and ``mode = 0``, the</span>
+<span class="sd">    default, enables both.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">model</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Neutral</span><span class="p">(</span><span class="s">&#39;/model&#39;</span><span class="p">)</span>
+    <span class="n">input_pulse</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">PulseGen</span><span class="p">(</span><span class="s">&#39;/model/pulse&#39;</span><span class="p">)</span>
+    <span class="c">#: set the baseline output 0</span>
+    <span class="n">input_pulse</span><span class="o">.</span><span class="n">baseLevel</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="c">#: We make it generate three pulses </span>
+    <span class="n">input_pulse</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">input_pulse</span><span class="o">.</span><span class="n">level</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">input_pulse</span><span class="o">.</span><span class="n">level</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+    <span class="n">input_pulse</span><span class="o">.</span><span class="n">level</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.0</span>
+    <span class="c">#: Each pulse will appear 1 s after the previous one</span>
+    <span class="n">input_pulse</span><span class="o">.</span><span class="n">delay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">input_pulse</span><span class="o">.</span><span class="n">delay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">input_pulse</span><span class="o">.</span><span class="n">delay</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="c">#: Each pulse is 1 s wide</span>
+    <span class="n">input_pulse</span><span class="o">.</span><span class="n">width</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">input_pulse</span><span class="o">.</span><span class="n">width</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">input_pulse</span><span class="o">.</span><span class="n">width</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="c">#: Now create the PyRun object</span>
+    <span class="n">pyrun</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">PyRun</span><span class="p">(</span><span class="s">&#39;/model/pyrun&#39;</span><span class="p">)</span>
+    <span class="n">pyrun</span><span class="o">.</span><span class="n">runString</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">output = input_ * input_</span>
+<span class="s">print &#39;input =&#39;, input_</span>
+<span class="s">print &#39;output =&#39;, output</span>
+<span class="s">&quot;&quot;&quot;</span>
+    <span class="n">pyrun</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="mi">2</span> <span class="c"># do not run process method</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">input_pulse</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">pyrun</span><span class="p">,</span> <span class="s">&#39;trigger&#39;</span><span class="p">)</span>
+    <span class="n">output_table</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;/model/output&#39;</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pyrun</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">output_table</span><span class="p">,</span> <span class="s">&#39;input&#39;</span><span class="p">)</span>
+    <span class="n">input_table</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;/model/input&#39;</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">input_pulse</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">input_table</span><span class="p">,</span> <span class="s">&#39;input&#39;</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">input_pulse</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s">&#39;process&#39;</span><span class="p">)</span>
+    <span class="c">#: this is unnecessary because the mode=2 ensures that `process`</span>
+    <span class="c">#: does nothing</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pyrun</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s">&#39;process&#39;</span><span class="p">)</span> 
+    <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;/model/#[ISA=Table]&#39;</span><span class="p">,</span> <span class="s">&#39;process&#39;</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">reinit</span><span class="p">()</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mf">10.0</span><span class="p">)</span>
+    <span class="c">#ts = </span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">input_table</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;input&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">output_table</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;output&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</div>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">run_sequence</span><span class="p">()</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s">&#39;/model&#39;</span><span class="p">)</span>
+    <span class="n">input_output</span><span class="p">()</span>
+    
+
+
+<span class="c"># </span>
+<span class="c"># pyrun.py ends here</span>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Upinder Bhalla, Niraj Dudani, Aditya Gilra, Aviral Goel, Subhasis Ray and Dilawar Singh.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

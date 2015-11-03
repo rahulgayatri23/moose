@@ -1,0 +1,492 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>IntegrateFireZoo &mdash; MOOSE 3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="MOOSE 3.0 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> MOOSE
+        
+
+        
+          
+          <img src="../_static/moose_logo.png" class="logo" />
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../moose_quickstart.html">1. Getting started with python scripting for MOOSE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#introduction">1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#importing-moose-and-accessing-built-in-documentation">1.2. Importing MOOSE and accessing built-in documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#creating-objects-and-traversing-the-object-hierarchy">1.2.1. Creating objects and traversing the object hierarchy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#setting-the-properties-of-elements-accessing-fields">1.3. Setting the properties of elements: accessing fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#putting-them-together-setting-up-connections">1.4. Putting them together: setting up connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#scheduling">1.5. Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#running-the-simulation">1.6. Running the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#some-more-details">1.7. Some more details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#vec-melement-and-element">1.7.1. <code class="docutils literal"><span class="pre">vec</span></code>, <code class="docutils literal"><span class="pre">melement</span></code> and <code class="docutils literal"><span class="pre">element</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#finfos">1.7.2. <code class="docutils literal"><span class="pre">Finfos</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#moving-on">1.8. Moving on</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_cookbook.html">2. MOOSE Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#loading-and-running-models">2.1. Loading and running models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#hello-moose-load-run-and-display-existing-models">2.1.1. Hello, MOOSE: Load, run and display existing models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#the-hodgkin-huxley-demo">2.1.2. The Hodgkin-Huxley demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#start-stop-and-setting-clocks">2.1.3. Start, Stop, and setting clocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#run-python-from-moose">2.1.4. Run Python from MOOSE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#accessing-and-tweaking-parameters">2.1.5. Accessing and tweaking parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#storing-simulation-output">2.1.6. Storing simulation output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#computing-arbitrary-functions-on-the-fly">2.1.7. Computing arbitrary functions on the fly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#solving-arbitrary-differential-equations">2.1.8. Solving arbitrary differential equations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#chemical-signaling-models">2.2. Chemical Signaling models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#running-with-different-numerical-methods">2.2.1. Running with different numerical methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#changing-volumes">2.2.2. Changing volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#feeding-tabulated-input-to-a-model">2.2.3. Feeding tabulated input to a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#finding-steady-states">2.2.4. Finding steady states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#making-a-dose-response-curve">2.2.5. Making a dose-response curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#building-a-chemical-model-from-parts">2.2.6. Building a chemical model from parts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#oscillation-models">2.2.7. Oscillation models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#bistability-models">2.2.8. Bistability models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-models">2.3. Reaction-diffusion models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-transport-in-a-tapering-cylinder">2.3.1. Reaction-diffusion + transport in a tapering cylinder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-turing-model">2.3.2. A Turing model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-spatial-bistable-model">2.3.3. A spatial bistable model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-in-neurons">2.3.4. Reaction-diffusion in neurons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#transport-in-branching-dendritic-tree">2.3.5. Transport in branching dendritic tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#cross-compartment-reaction-systems">2.3.6. Cross-compartment reaction systems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#single-neuron-models">2.4. Single neuron models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#modeling-details">2.4.1. Modeling details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#neuronal-simulations-in-moosegui">2.4.2. Neuronal simulations in MOOSEGUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#demos">2.4.3. Demos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#loading-modifying-saving">2.4.4. Loading, modifying, saving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#explicit-vs-implict-methods">2.4.5. Explicit vs. implict methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#integrate-and-fire-models">2.4.6. Integrate-and-fire models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#the-hh-model">2.4.7. The HH model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#analyzing-spike-trains">2.4.8. Analyzing spike trains</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#network-models">2.5. Network models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#connecting-two-cells-via-a-synapse">2.5.1. Connecting two cells via a synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#plastic-synapse-stdp">2.5.2. Plastic synapse: STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#network-with-ca-based-plasticity">2.5.3. Network with Ca-based plasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#providing-random-input-to-a-cell">2.5.4. Providing random input to a cell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#recurrent-integrate-and-fire-network">2.5.5. Recurrent integrate-and-fire network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#recurrent-integrate-and-fire-network-with-plasticity">2.5.6. Recurrent integrate-and-fire network with plasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-feed-forward-network-with-random-input">2.5.7. A feed-forward network with random input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#using-compartmental-models-in-networks">2.5.8. Using compartmental models in networks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#multiscale-models">2.6. Multiscale models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#single-compartment-multiscale-model">2.6.1. Single-compartment multiscale model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#multi-compartment-multiscale-model">2.6.2. Multi-compartment multiscale model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#graphics">2.7. Graphics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#displaying-time-series-plots">2.7.1. Displaying time-series plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#animation-of-values-along-an-axis">2.7.2. Animation of values along an axis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#using-moogli-widgets-to-display-a-neuron">2.7.3. Using MOOGLI widgets to display a neuron</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_builtins.html">3. MOOSE builtins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_classes.html">4. MOOSE Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_classes.html#alphabetical-listing-of-moose-classes">4.1. Alphabetical listing of moose classes</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">MOOSE</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      
+    <li>IntegrateFireZoo</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for IntegrateFireZoo</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#/**********************************************************************</span>
+<span class="c">#** This program is part of &#39;MOOSE&#39;, the</span>
+<span class="c">#** Messaging Object Oriented Simulation Environment.</span>
+<span class="c">#**           Copyright (C) 2003-2014 Upinder S. Bhalla. and NCBS</span>
+<span class="c">#** It is made available under the terms of the</span>
+<span class="c">#** GNU Lesser General Public License version 2.1</span>
+<span class="c">#** See the file COPYING.LIB for the full notice.</span>
+<span class="c">#**********************************************************************/</span>
+
+<span class="c">#### Author: Aditya Gilra, NCBS, Bangalore, October, 2014.</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Simulate current injection into various Integrate and Fire neurons.</span>
+
+<span class="sd">All integrate and fire (IF) neurons are subclasses of compartment,</span>
+<span class="sd">so they have all the fields of a passive compartment. Multicompartmental neurons can be created.</span>
+<span class="sd">Even ion channels and synaptic channels can be added to them, say for sub-threshold behaviour.</span>
+
+<span class="sd">The key addition is that they have a reset mechanism when the membrane potential Vm crosses a threshold.</span>
+<span class="sd">On each reset, a spikeOut message is generated, and the membrane potential is reset to Vreset.</span>
+<span class="sd">The threshold may be the spike generation threshold as for LIF and AdThreshIF,</span>
+<span class="sd">or it may be the peak of the spike as for QIF, ExIF, AdExIF, and IzhIF.</span>
+<span class="sd">The adaptive IFs have an extra adapting variable apart from membrane potential Vm.</span>
+
+<span class="sd">Details of the IFs are given below.</span>
+<span class="sd">The fields of the MOOSE objects are named exactly as the parameters in the equations below.</span>
+
+<span class="sd"> LIF:      Leaky Integrate and Fire: </span>
+<span class="sd">           Rm*Cm * dVm/dt = -(Vm-Em) + Rm*I</span>
+<span class="sd">           </span>
+<span class="sd"> QIF:      Quadratic LIF: </span>
+<span class="sd">           Rm*Cm * dVm/dt = a0*(Vm-Em)*(Vm-vCritical) + Rm*I</span>
+<span class="sd">           </span>
+<span class="sd"> ExIF:     Exponential leaky integrate and fire: </span>
+<span class="sd">           Rm*Cm * dVm/dt = -(Vm-Em) + deltaThresh * exp((Vm-thresh)/deltaThresh) + Rm*I</span>
+<span class="sd">           </span>
+<span class="sd"> AdExIF:   Adaptive Exponential LIF: </span>
+<span class="sd">           Rm*Cm * dVm/dt = -(Vm-Em) + deltaThresh * exp((Vm-thresh)/deltaThresh) + Rm*I - w,</span>
+<span class="sd">           </span>
+<span class="sd">           tau_w * dw/dt = a0*(Vm-Em) - w,</span>
+<span class="sd">           </span>
+<span class="sd">           At each spike, w -&gt; w + b0 &quot;</span>
+<span class="sd">           </span>
+<span class="sd"> AdThreshIF: Adaptive threshold LIF:</span>
+<span class="sd">           Rm*Cm * dVm/dt = -(Vm-Em) + Rm*I,</span>
+<span class="sd">           </span>
+<span class="sd">           tauThresh * d threshAdaptive / dt = a0*(Vm-Em) - threshAdaptive,</span>
+<span class="sd">           </span>
+<span class="sd">           At each spike, threshAdaptive is increased by threshJump  </span>
+<span class="sd">           the spiking threshold adapts as thresh + threshAdaptive  </span>
+<span class="sd">           </span>
+<span class="sd"> IzhIF:    Izhikevich:</span>
+<span class="sd">           d Vm /dt = a0 * Vm^2 + b0 * Vm + c0 - u + I/Cm,</span>
+<span class="sd">           </span>
+<span class="sd">           d u / dt = a * ( b * Vm - u ),</span>
+<span class="sd">           </span>
+<span class="sd">           At each spike, u -&gt; u + d,</span>
+<span class="sd">           </span>
+<span class="sd">           By default, a0 = 0.04e6/V/s, b0 = 5e3/s, c0 = 140 V/s are set to SI units,</span>
+<span class="sd">           so use SI consistently, or change a0, b0, c0 also if you wish to use other units.</span>
+<span class="sd">           Rm from Compartment is not used here, vReset is same as c in the usual formalism.</span>
+<span class="sd">           At rest, u0 = b V0, and V0 = ( -(-b0-b) +/- sqrt((b0-b)^2 - 4*a0*c0)) / (2*a0).</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">moose</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c"># ###########################################</span>
+<span class="c"># Neuron model parameters (definitions above)</span>
+<span class="c"># ###########################################</span>
+
+<span class="c"># Leaky Integrate and Fire neuron (common to all IFs)</span>
+<span class="n">Vrest</span> <span class="o">=</span> <span class="o">-</span><span class="mf">65e-3</span> <span class="c"># V      # resting potential</span>
+<span class="n">Vt_base</span> <span class="o">=</span> <span class="o">-</span><span class="mf">45e-3</span> <span class="c"># V    # threshold</span>
+<span class="n">Vreset</span> <span class="o">=</span> <span class="o">-</span><span class="mf">55e-3</span> <span class="c"># V     # Vreset need not be same as Vrest</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">1e8</span> <span class="c"># Ohm</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mf">10e-3</span> <span class="c"># s</span>
+<span class="n">refrT</span> <span class="o">=</span> <span class="mf">1e-3</span> <span class="c"># s</span>
+
+<span class="c"># for QIF</span>
+<span class="n">vCritical</span> <span class="o">=</span> <span class="o">-</span><span class="mf">54e-3</span> <span class="c"># V  # critical voltage above</span>
+                        <span class="c"># which Vm rises fast quadratically</span>
+<span class="n">a0</span> <span class="o">=</span> <span class="mf">1e3</span> <span class="c"># V^-1         # parameter in equation</span>
+
+<span class="c"># for ExIF</span>
+<span class="n">deltaThresh</span> <span class="o">=</span> <span class="mf">10e-3</span> <span class="c"># V</span>
+<span class="n">vPeak</span> <span class="o">=</span> <span class="mf">30e-3</span> <span class="c"># V       # for ExpIF &amp; IzhIF, reset is from vPeak, not thresh.</span>
+                        <span class="c"># I also use vPeak for adding spikes post-simulation</span>
+                        <span class="c"># to LIF, QIF, etc.</span>
+<span class="c"># for AdExIF</span>
+<span class="n">a0AdEx</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c"># unitless # voltage-dependent adaptation factor</span>
+<span class="n">b0</span> <span class="o">=</span> <span class="mf">5e-10</span> <span class="c"># Amp        # current step added to the adaptation current at each spike</span>
+<span class="n">tauW</span> <span class="o">=</span> <span class="mf">20e-3</span> <span class="c"># s        # decay time constant of the adaptation current</span>
+
+<span class="c"># for AdThreshIF</span>
+<span class="n">a0AdTh</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c"># unitless # voltage-dependent adaptation factor</span>
+<span class="n">threshJump</span> <span class="o">=</span> <span class="mf">5e-3</span> <span class="c"># V   # voltage step added to the threshold at each spike</span>
+<span class="n">tauThresh</span> <span class="o">=</span> <span class="mf">20e-3</span> <span class="c"># s   # decay time constant of the adaptative threshold</span>
+
+<span class="c"># for IzhIF</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">50.0</span> <span class="c"># s^-1         # d u / dt = a * ( b * Vm - u )</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">246.15</span> <span class="c"># s^-1       # to obtain Em = -65mV at rest, set b = (a0*Em^2 + b0*Em + c0)/Em</span>
+                        <span class="c"># b = (4×10⁴×(−65×10⁻³)^2 + 5×10³×(−65×10⁻³) + 140) ÷ (−65×10⁻³)</span>
+<span class="n">uRest</span> <span class="o">=</span> <span class="o">-</span><span class="mi">16</span> <span class="c"># V/s       # uRest = b*Em = -16 V/s</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">10</span> <span class="c"># V/s            # d is added to u at every spike</span>
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../moose_cookbook.html#IntegrateFireZoo.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    On the command-line, in Demos/snippets directory, run ``python IntegrateFireZoo.py``.  </span>
+<span class="sd">    The script will ask you which neuron you want to simulate and you can choose and run what you want.  </span>
+<span class="sd">    Play with the parameters of the IF neurons in the source code.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">neuronChoices</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;LIF&#39;</span><span class="p">:</span><span class="n">moose</span><span class="o">.</span><span class="n">LIF</span><span class="p">,</span> <span class="s">&#39;QIF&#39;</span><span class="p">:</span><span class="n">moose</span><span class="o">.</span><span class="n">QIF</span><span class="p">,</span> <span class="s">&#39;ExIF&#39;</span><span class="p">:</span><span class="n">moose</span><span class="o">.</span><span class="n">ExIF</span><span class="p">,</span> <span class="s">&#39;AdExIF&#39;</span><span class="p">:</span><span class="n">moose</span><span class="o">.</span><span class="n">AdExIF</span><span class="p">,</span>
+                    <span class="s">&#39;AdThreshIF&#39;</span><span class="p">:</span><span class="n">moose</span><span class="o">.</span><span class="n">AdThreshIF</span><span class="p">,</span> <span class="s">&#39;IzhIF&#39;</span><span class="p">:</span><span class="n">moose</span><span class="o">.</span><span class="n">IzhIF</span><span class="p">}</span>
+    <span class="c">#### CHOOSE ONE OF THE NEURON KEYS AS choiceKey FROM BELOW DICTIONARY ####</span>
+    <span class="c">#choiceKey = &#39;LIF&#39;</span>
+    <span class="c">#### No need, am inputting it from the user on the terminal</span>
+    <span class="n">choiceKeys</span> <span class="o">=</span> <span class="n">neuronChoices</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="c"># keys() does not retain the order in dict defn above!</span>
+    <span class="n">choiceIndex</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&#39;Choose a number corresponding to your desired neuron: &#39;</span><span class="o">+</span> \
+                        <span class="nb">str</span><span class="p">([(</span><span class="n">i</span><span class="p">,</span><span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">key</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">choiceKeys</span><span class="p">)])</span><span class="o">+</span><span class="s">&#39; -- &#39;</span><span class="p">)</span>
+    <span class="n">choiceKey</span> <span class="o">=</span> <span class="n">choiceKeys</span><span class="p">[</span><span class="n">choiceIndex</span><span class="p">]</span>
+    <span class="n">neuronChoice</span> <span class="o">=</span> <span class="n">neuronChoices</span><span class="p">[</span><span class="n">choiceKey</span><span class="p">]</span>
+
+    <span class="c"># ###########################################</span>
+    <span class="c"># Initialize neuron group</span>
+    <span class="c"># ###########################################</span>
+
+    <span class="c"># neuron instantiation</span>
+    <span class="n">network</span> <span class="o">=</span> <span class="n">neuronChoice</span><span class="p">(</span> <span class="s">&#39;network&#39;</span> <span class="p">);</span> <span class="c"># choose neuron type above</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">le</span><span class="p">(</span> <span class="s">&#39;/network&#39;</span> <span class="p">)</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">Em</span> <span class="o">=</span> <span class="n">Vrest</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">thresh</span> <span class="o">=</span> <span class="n">Vt_base</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">refractoryPeriod</span> <span class="o">=</span> <span class="n">refrT</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">Rm</span> <span class="o">=</span> <span class="n">R</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">vReset</span> <span class="o">=</span> <span class="n">Vreset</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">Cm</span> <span class="o">=</span> <span class="n">tau</span><span class="o">/</span><span class="n">R</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">initVm</span> <span class="o">=</span> <span class="n">Vrest</span>
+
+    <span class="c"># neuron specific parameters and current injected I</span>
+    <span class="k">if</span> <span class="n">choiceKey</span> <span class="o">==</span> <span class="s">&#39;LIF&#39;</span><span class="p">:</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">inject</span> <span class="o">=</span> <span class="mf">5e-10</span> <span class="c"># Amp    # injected current I</span>
+    <span class="k">if</span> <span class="n">choiceKey</span> <span class="o">==</span> <span class="s">&#39;QIF&#39;</span><span class="p">:</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">a0</span> <span class="o">=</span> <span class="n">a0</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">vCritical</span> <span class="o">=</span> <span class="n">vCritical</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">inject</span> <span class="o">=</span> <span class="mf">5e-10</span> <span class="c"># Amp    # injected current I</span>
+    <span class="k">elif</span> <span class="n">choiceKey</span> <span class="o">==</span> <span class="s">&#39;ExIF&#39;</span><span class="p">:</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">deltaThresh</span> <span class="o">=</span> <span class="n">deltaThresh</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">vPeak</span> <span class="o">=</span> <span class="n">vPeak</span>           <span class="c"># reset at vPeak, not at thresh</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">inject</span> <span class="o">=</span> <span class="mf">5e-9</span>  <span class="c"># Amp    # injected current I</span>
+    <span class="k">elif</span> <span class="n">choiceKey</span> <span class="o">==</span> <span class="s">&#39;AdExIF&#39;</span><span class="p">:</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">deltaThresh</span> <span class="o">=</span> <span class="n">deltaThresh</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">vPeak</span> <span class="o">=</span> <span class="n">vPeak</span>           <span class="c"># reset at vPeak, not at thresh</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">a0</span> <span class="o">=</span> <span class="n">a0AdEx</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">b0</span> <span class="o">=</span> <span class="n">b0</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">tauW</span> <span class="o">=</span> <span class="n">tauW</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">inject</span> <span class="o">=</span> <span class="mf">5e-9</span>  <span class="c"># Amp    # injected current I</span>
+    <span class="k">elif</span> <span class="n">choiceKey</span> <span class="o">==</span> <span class="s">&#39;AdThreshIF&#39;</span><span class="p">:</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">a0</span> <span class="o">=</span> <span class="n">a0AdTh</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">threshJump</span> <span class="o">=</span> <span class="n">threshJump</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">tauThresh</span> <span class="o">=</span> <span class="n">tauThresh</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">inject</span> <span class="o">=</span> <span class="mf">1e-9</span>  <span class="c"># Amp    # injected current I</span>
+    <span class="k">elif</span> <span class="n">choiceKey</span> <span class="o">==</span> <span class="s">&#39;IzhIF&#39;</span><span class="p">:</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">uInit</span> <span class="o">=</span> <span class="n">uRest</span>           <span class="c"># Just sets the initial value of u</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">vPeak</span> <span class="o">=</span> <span class="n">vPeak</span>           <span class="c"># reset at vPeak, not at thresh</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">inject</span> <span class="o">=</span> <span class="mf">5e-9</span>  <span class="c"># Amp    # injected current I</span>
+
+    <span class="k">print</span> <span class="s">&quot;Injecting current =&quot;</span><span class="p">,</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">inject</span><span class="p">,</span><span class="s">&quot;in&quot;</span><span class="p">,</span><span class="n">choiceKey</span><span class="p">,</span><span class="s">&quot;neuron.&quot;</span>
+
+    <span class="c"># ###########################################</span>
+    <span class="c"># Setting up table</span>
+    <span class="c"># ###########################################</span>
+
+    <span class="n">Vm</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span> <span class="s">&#39;/plotVm&#39;</span> <span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span> <span class="n">network</span><span class="p">,</span> <span class="s">&#39;VmOut&#39;</span><span class="p">,</span> <span class="n">Vm</span><span class="p">,</span> <span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;OneToOne&#39;</span><span class="p">)</span>
+    <span class="n">spikes</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span> <span class="s">&#39;/plotSpikes&#39;</span> <span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span> <span class="n">network</span><span class="p">,</span> <span class="s">&#39;spikeOut&#39;</span><span class="p">,</span> <span class="n">spikes</span><span class="p">,</span> <span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;OneToOne&#39;</span><span class="p">)</span>
+
+    <span class="c"># ###########################################</span>
+    <span class="c"># Simulate the current injection</span>
+    <span class="c"># ###########################################</span>
+
+    <span class="n">dt</span> <span class="o">=</span> <span class="mf">5e-6</span> <span class="c"># s</span>
+    <span class="n">runtime</span> <span class="o">=</span> <span class="mf">0.02</span> <span class="c"># s</span>
+
+    <span class="c"># moose simulation</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;/network&#39;</span><span class="p">,</span> <span class="s">&#39;process&#39;</span> <span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;/plotSpikes&#39;</span><span class="p">,</span> <span class="s">&#39;process&#39;</span> <span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;/plotVm&#39;</span><span class="p">,</span> <span class="s">&#39;process&#39;</span> <span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dt</span> <span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dt</span> <span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dt</span> <span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dt</span> <span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span> <span class="mi">9</span><span class="p">,</span> <span class="n">dt</span> <span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">reinit</span><span class="p">()</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">runtime</span><span class="p">)</span>
+
+    <span class="c"># ###########################################</span>
+    <span class="c"># Plot the simulated Vm-s and STDP curve</span>
+    <span class="c"># ###########################################</span>
+
+    <span class="c"># Voltage plots</span>
+    <span class="n">Vmseries</span> <span class="o">=</span> <span class="n">Vm</span><span class="o">.</span><span class="n">vector</span>
+    <span class="n">numsteps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Vmseries</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">choiceKey</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;ExIF&#39;</span><span class="p">,</span><span class="s">&#39;AdExIF&#39;</span><span class="p">,</span><span class="s">&#39;IzhIF&#39;</span><span class="p">]:</span>
+        <span class="c"># insert spikes so that Vm reset at thresh doesn&#39;t look weird</span>
+        <span class="c"># for ExIF, etc. reset is at vPeak, so not weird.</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">spikes</span><span class="o">.</span><span class="n">vector</span><span class="p">:</span>
+            <span class="n">Vmseries</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">30e-3</span> <span class="c"># V</span>
+    <span class="n">timeseries</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mi">1000</span><span class="o">*</span><span class="n">numsteps</span><span class="o">*</span><span class="n">dt</span><span class="o">-</span><span class="mf">1e-10</span><span class="p">,</span><span class="n">dt</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeseries</span><span class="p">,</span><span class="n">Vmseries</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="c"># neuron&#39;s Vm</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;time (ms)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Vm (mV)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">choiceKey</span><span class="o">+</span><span class="s">&quot;neuron, current=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">inject</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;A&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c"># Run below if script is executed standalone.</span></div>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;The main function to simulate an integrate and fire neuron.&#39;&#39;&#39;</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Upinder Bhalla, Niraj Dudani, Aditya Gilra, Aviral Goel, Subhasis Ray and Dilawar Singh.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

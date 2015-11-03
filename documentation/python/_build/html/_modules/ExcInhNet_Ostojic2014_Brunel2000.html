@@ -1,0 +1,660 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ExcInhNet_Ostojic2014_Brunel2000 &mdash; MOOSE 3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="MOOSE 3.0 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> MOOSE
+        
+
+        
+          
+          <img src="../_static/moose_logo.png" class="logo" />
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../moose_quickstart.html">1. Getting started with python scripting for MOOSE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#introduction">1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#importing-moose-and-accessing-built-in-documentation">1.2. Importing MOOSE and accessing built-in documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#creating-objects-and-traversing-the-object-hierarchy">1.2.1. Creating objects and traversing the object hierarchy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#setting-the-properties-of-elements-accessing-fields">1.3. Setting the properties of elements: accessing fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#putting-them-together-setting-up-connections">1.4. Putting them together: setting up connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#scheduling">1.5. Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#running-the-simulation">1.6. Running the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#some-more-details">1.7. Some more details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#vec-melement-and-element">1.7.1. <code class="docutils literal"><span class="pre">vec</span></code>, <code class="docutils literal"><span class="pre">melement</span></code> and <code class="docutils literal"><span class="pre">element</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#finfos">1.7.2. <code class="docutils literal"><span class="pre">Finfos</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#moving-on">1.8. Moving on</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_cookbook.html">2. MOOSE Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#loading-and-running-models">2.1. Loading and running models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#hello-moose-load-run-and-display-existing-models">2.1.1. Hello, MOOSE: Load, run and display existing models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#the-hodgkin-huxley-demo">2.1.2. The Hodgkin-Huxley demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#start-stop-and-setting-clocks">2.1.3. Start, Stop, and setting clocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#run-python-from-moose">2.1.4. Run Python from MOOSE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#accessing-and-tweaking-parameters">2.1.5. Accessing and tweaking parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#storing-simulation-output">2.1.6. Storing simulation output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#computing-arbitrary-functions-on-the-fly">2.1.7. Computing arbitrary functions on the fly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#solving-arbitrary-differential-equations">2.1.8. Solving arbitrary differential equations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#chemical-signaling-models">2.2. Chemical Signaling models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#running-with-different-numerical-methods">2.2.1. Running with different numerical methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#changing-volumes">2.2.2. Changing volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#feeding-tabulated-input-to-a-model">2.2.3. Feeding tabulated input to a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#finding-steady-states">2.2.4. Finding steady states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#making-a-dose-response-curve">2.2.5. Making a dose-response curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#building-a-chemical-model-from-parts">2.2.6. Building a chemical model from parts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#oscillation-models">2.2.7. Oscillation models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#bistability-models">2.2.8. Bistability models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-models">2.3. Reaction-diffusion models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-transport-in-a-tapering-cylinder">2.3.1. Reaction-diffusion + transport in a tapering cylinder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-turing-model">2.3.2. A Turing model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-spatial-bistable-model">2.3.3. A spatial bistable model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-in-neurons">2.3.4. Reaction-diffusion in neurons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#transport-in-branching-dendritic-tree">2.3.5. Transport in branching dendritic tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#cross-compartment-reaction-systems">2.3.6. Cross-compartment reaction systems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#single-neuron-models">2.4. Single neuron models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#modeling-details">2.4.1. Modeling details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#neuronal-simulations-in-moosegui">2.4.2. Neuronal simulations in MOOSEGUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#demos">2.4.3. Demos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#loading-modifying-saving">2.4.4. Loading, modifying, saving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#explicit-vs-implict-methods">2.4.5. Explicit vs. implict methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#integrate-and-fire-models">2.4.6. Integrate-and-fire models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#the-hh-model">2.4.7. The HH model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#analyzing-spike-trains">2.4.8. Analyzing spike trains</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#network-models">2.5. Network models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#connecting-two-cells-via-a-synapse">2.5.1. Connecting two cells via a synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#plastic-synapse-stdp">2.5.2. Plastic synapse: STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#network-with-ca-based-plasticity">2.5.3. Network with Ca-based plasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#providing-random-input-to-a-cell">2.5.4. Providing random input to a cell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#recurrent-integrate-and-fire-network">2.5.5. Recurrent integrate-and-fire network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#recurrent-integrate-and-fire-network-with-plasticity">2.5.6. Recurrent integrate-and-fire network with plasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-feed-forward-network-with-random-input">2.5.7. A feed-forward network with random input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#using-compartmental-models-in-networks">2.5.8. Using compartmental models in networks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#multiscale-models">2.6. Multiscale models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#single-compartment-multiscale-model">2.6.1. Single-compartment multiscale model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#multi-compartment-multiscale-model">2.6.2. Multi-compartment multiscale model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#graphics">2.7. Graphics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#displaying-time-series-plots">2.7.1. Displaying time-series plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#animation-of-values-along-an-axis">2.7.2. Animation of values along an axis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#using-moogli-widgets-to-display-a-neuron">2.7.3. Using MOOGLI widgets to display a neuron</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_builtins.html">3. MOOSE builtins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_classes.html">4. MOOSE Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_classes.html#alphabetical-listing-of-moose-classes">4.1. Alphabetical listing of moose classes</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">MOOSE</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      
+    <li>ExcInhNet_Ostojic2014_Brunel2000</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for ExcInhNet_Ostojic2014_Brunel2000</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c">#/**********************************************************************</span>
+<span class="c">#** This program is part of &#39;MOOSE&#39;, the</span>
+<span class="c">#** Messaging Object Oriented Simulation Environment.</span>
+<span class="c">#**           Copyright (C) 2003-2014 Upinder S. Bhalla. and NCBS</span>
+<span class="c">#** It is made available under the terms of the</span>
+<span class="c">#** GNU Lesser General Public License version 2.1</span>
+<span class="c">#** See the file COPYING.LIB for the full notice.</span>
+<span class="c">#**********************************************************************/</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This LIF network is based on:</span>
+<span class="sd">Ostojic, S. (2014).</span>
+<span class="sd">Two types of asynchronous activity in networks of</span>
+<span class="sd">excitatory and inhibitory spiking neurons.</span>
+<span class="sd">Nat Neurosci 17, 594-600.</span>
+<span class="sd"> </span>
+<span class="sd">Key parameter to change is synaptic coupling J (mV).</span>
+<span class="sd">Critical J is ~ 0.45e-3 V in paper for C/N = 0.1</span>
+<span class="sd">See what happens for J = 0.2e-3 V versus J = 0.8e-3 V</span>
+
+<span class="sd">Author: Aditya Gilra, NCBS, Bangalore, October, 2014.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c">## import modules and functions to be used</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">moose</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c"># set seed for reproducibility of simulations</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c"># set seed for reproducibility of simulations</span>
+
+<span class="c">#############################################</span>
+<span class="c"># Neuron model</span>
+<span class="c">#############################################</span>
+
+<span class="c"># equation: dv/dt = (1/taum)*(-(v-el)) + inp</span>
+<span class="c"># with spike when v&gt;vt, reset to vr</span>
+
+<span class="n">el</span> <span class="o">=</span> <span class="o">-</span><span class="mf">65e-3</span>  <span class="c">#V        # Resting potential</span>
+<span class="n">vt</span> <span class="o">=</span> <span class="o">-</span><span class="mf">45e-3</span>  <span class="c">#V        # Spiking threshold</span>
+<span class="n">Rm</span> <span class="o">=</span> <span class="mf">20e6</span>    <span class="c">#Ohm      # Only taum is needed, but LIF neuron accepts </span>
+<span class="n">Cm</span> <span class="o">=</span> <span class="mf">1e-9</span>    <span class="c">#F        # Rm and Cm and constructs taum=Rm*Cm</span>
+<span class="n">taum</span> <span class="o">=</span> <span class="n">Rm</span><span class="o">*</span><span class="n">Cm</span> <span class="c">#s        # Membrane time constant is 20 ms in Ostojic 2014.</span>
+<span class="n">vr</span> <span class="o">=</span> <span class="o">-</span><span class="mf">55e-3</span>  <span class="c">#V        # Reset potential</span>
+<span class="n">inp</span> <span class="o">=</span> <span class="mf">20.1e-3</span><span class="o">/</span><span class="n">taum</span> <span class="c">#V/s  # inp = Iinject/Cm to each neuron</span>
+                       <span class="c"># same as setting el=-41 mV and inp=0</span>
+<span class="n">Iinject</span> <span class="o">=</span> <span class="n">inp</span><span class="o">*</span><span class="n">Cm</span>       <span class="c"># LIF neuron has injection current as param</span>
+
+<span class="c">#############################################</span>
+<span class="c"># Network parameters: numbers</span>
+<span class="c">#############################################</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>          <span class="c"># Total number of neurons</span>
+<span class="n">fexc</span> <span class="o">=</span> <span class="mf">0.8</span>        <span class="c"># Fraction of exc neurons</span>
+<span class="n">NE</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fexc</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>  <span class="c"># Number of excitatory cells</span>
+<span class="n">NI</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="n">NE</span>         <span class="c"># Number of inhibitory cells </span>
+
+<span class="c">#############################################</span>
+<span class="c"># Simulation parameters</span>
+<span class="c">#############################################</span>
+
+<span class="n">simtime</span> <span class="o">=</span> <span class="mf">0.2</span>      <span class="c">#s # Simulation time</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">1e-6</span>         <span class="c">#s # time step</span>
+
+<span class="c">#############################################</span>
+<span class="c"># Network parameters: synapses (not for ExcInhNetBase)</span>
+<span class="c">#############################################</span>
+
+<span class="c">## With each presynaptic spike in exc / inh neuron,</span>
+<span class="c">## J / -g*J is added to post-synaptic Vm -- delta-fn synapse</span>
+<span class="c">## Since LIF neuron used below is derived from Compartment class,</span>
+<span class="c">## conductance-based synapses (SynChan class) can also be used.</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="mi">100</span>           <span class="c"># Number of incoming connections on each neuron (exc or inh)</span>
+<span class="n">fC</span> <span class="o">=</span> <span class="n">fexc</span>         <span class="c"># fraction fC incoming connections are exc, rest inhibitory</span>
+<span class="n">J</span> <span class="o">=</span> <span class="mf">0.8e-3</span> <span class="c">#V     # exc strength is J (in V as we add to voltage)</span>
+                  <span class="c"># Critical J is ~ 0.45e-3 V in paper for N = 10000, C = 1000</span>
+                  <span class="c"># See what happens for J = 0.2e-3 V versus J = 0.8e-3 V</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">5.0</span>           <span class="c"># -gJ is the inh strength. For exc-inh balance g &gt;~ f(1-f)=4</span>
+<span class="n">syndelay</span> <span class="o">=</span> <span class="mf">0.5e-3</span> <span class="o">+</span> <span class="n">dt</span> <span class="c"># s     # synaptic delay:</span>
+                               <span class="c"># 0 ms gives similar result contrary to Ostojic?!</span>
+<span class="n">refrT</span> <span class="o">=</span> <span class="mf">0.5e-3</span>    <span class="c"># s     # absolute refractory time -- 0 ms gives similar result</span>
+
+<span class="c">#############################################</span>
+<span class="c"># Exc-Inh network base class without connections</span>
+<span class="c">#############################################</span>
+
+<div class="viewcode-block" id="ExcInhNetBase"><a class="viewcode-back" href="../moose_cookbook.html#ExcInhNet_Ostojic2014_Brunel2000.ExcInhNetBase">[docs]</a><span class="k">class</span> <span class="nc">ExcInhNetBase</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Simulates and plots LIF neurons (exc and inh separate).</span>
+<span class="sd">    Author: Aditya Gilra, NCBS, Bangalore, India, October 2014</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">fexc</span><span class="o">=</span><span class="n">fexc</span><span class="p">,</span><span class="n">el</span><span class="o">=</span><span class="n">el</span><span class="p">,</span><span class="n">vt</span><span class="o">=</span><span class="n">vt</span><span class="p">,</span><span class="n">Rm</span><span class="o">=</span><span class="n">Rm</span><span class="p">,</span><span class="n">Cm</span><span class="o">=</span><span class="n">Cm</span><span class="p">,</span><span class="n">vr</span><span class="o">=</span><span class="n">vr</span><span class="p">,</span>\
+        <span class="n">refrT</span><span class="o">=</span><span class="n">refrT</span><span class="p">,</span><span class="n">Iinject</span><span class="o">=</span><span class="n">Iinject</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Constructor of the class &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="n">N</span>                 <span class="c"># Total number of neurons</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fexc</span> <span class="o">=</span> <span class="n">fexc</span>           <span class="c"># Fraction of exc neurons</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">NmaxExc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fexc</span><span class="o">*</span><span class="n">N</span><span class="p">)</span> <span class="c"># max idx of exc neurons, rest inh</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">el</span> <span class="o">=</span> <span class="n">el</span>        <span class="c"># Resting potential</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vt</span> <span class="o">=</span> <span class="n">vt</span>        <span class="c"># Spiking threshold</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">taum</span> <span class="o">=</span> <span class="n">taum</span>    <span class="c"># Membrane time constant</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vr</span> <span class="o">=</span> <span class="n">vr</span>        <span class="c"># Reset potential</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">refrT</span> <span class="o">=</span> <span class="n">refrT</span>  <span class="c"># Absolute refractory period</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Rm</span> <span class="o">=</span> <span class="n">Rm</span>        <span class="c"># Membrane resistance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Cm</span> <span class="o">=</span> <span class="n">Cm</span>        <span class="c"># Membrane capacitance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Iinject</span> <span class="o">=</span> <span class="n">Iinject</span> <span class="c"># constant input current</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">simif</span> <span class="o">=</span> <span class="bp">False</span>  <span class="c"># whether the simulation is complete</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setup_network</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="k">return</span> <span class="s">&quot;LIF network of </span><span class="si">%d</span><span class="s"> neurons &quot;</span>\
+             <span class="s">&quot;having </span><span class="si">%d</span><span class="s"> exc.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">_setup_network</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets up the network (_init_network is enough)&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">LIF</span><span class="p">(</span> <span class="s">&#39;network&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="p">);</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">le</span><span class="p">(</span> <span class="s">&#39;/network&#39;</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">Em</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">el</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">thresh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">refractoryPeriod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">refrT</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">Rm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Rm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">vReset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">Cm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">inject</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Iinject</span>
+
+    <span class="k">def</span> <span class="nf">_init_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">v0</span><span class="o">=</span><span class="n">el</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialises the network variables before simulation&quot;&quot;&quot;</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">initVm</span> <span class="o">=</span> <span class="n">v0</span>
+        
+    <span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">simtime</span><span class="o">=</span><span class="n">simtime</span><span class="p">,</span><span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span><span class="n">plotif</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">simtime</span> <span class="o">=</span> <span class="n">simtime</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">simtime</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">simtime</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span><span class="n">dt</span><span class="p">)</span>   
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_network</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plotif</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_init_plots</span><span class="p">()</span>
+        
+        <span class="c"># moose simulation</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;/network/syns&#39;</span><span class="p">,</span> <span class="s">&#39;process&#39;</span> <span class="p">)</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;/network&#39;</span><span class="p">,</span> <span class="s">&#39;process&#39;</span> <span class="p">)</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;/plotSpikes&#39;</span><span class="p">,</span> <span class="s">&#39;process&#39;</span> <span class="p">)</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;/plotVms&#39;</span><span class="p">,</span> <span class="s">&#39;process&#39;</span> <span class="p">)</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">useClock</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;/plotWeights&#39;</span><span class="p">,</span> <span class="s">&#39;process&#39;</span> <span class="p">)</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dt</span> <span class="p">)</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dt</span> <span class="p">)</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dt</span> <span class="p">)</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dt</span> <span class="p">)</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span> <span class="mi">9</span><span class="p">,</span> <span class="n">dt</span> <span class="p">)</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">&#39;reinit MOOSE&#39;</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">reinit</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">&#39;reinit time t = &#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">&#39;starting&#39;</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">simtime</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;runtime, t = &#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span>
+
+        <span class="k">if</span> <span class="n">plotif</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_plot</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_init_plots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c">## make a few tables to store a few Vm-s</span>
+        <span class="n">numVms</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plots</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span> <span class="s">&#39;/plotVms&#39;</span><span class="p">,</span> <span class="n">numVms</span> <span class="p">)</span>
+        <span class="c">## draw numVms out of N neurons</span>
+        <span class="c"># not using random.sample() here since Brian version isn&#39;t</span>
+        <span class="c">#nrnIdxs = random.sample(range(self.N),numVms)</span>
+        <span class="n">nrnIdxs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">numVms</span> <span class="p">):</span>
+            <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">nrnIdxs</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="s">&#39;VmOut&#39;</span><span class="p">,</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s">&#39;input&#39;</span><span class="p">)</span>
+
+        <span class="c">## make self.N tables to store spikes of all neurons</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spikes</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span> <span class="s">&#39;/plotSpikes&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="p">)</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="p">,</span> <span class="s">&#39;spikeOut&#39;</span><span class="p">,</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">spikes</span><span class="p">,</span> <span class="s">&#39;input&#39;</span><span class="p">,</span> <span class="s">&#39;OneToOne&#39;</span> <span class="p">)</span>
+
+        <span class="c">## make 2 tables to store spikes of all exc and all inh neurons</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spikesExc</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span> <span class="s">&#39;/plotSpikesAllExc&#39;</span> <span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">):</span>
+            <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s">&#39;spikeOut&#39;</span><span class="p">,</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">spikesExc</span><span class="p">,</span> <span class="s">&#39;input&#39;</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spikesInh</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span> <span class="s">&#39;/plotSpikesAllInh&#39;</span> <span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">):</span>
+            <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s">&#39;spikeOut&#39;</span><span class="p">,</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">spikesInh</span><span class="p">,</span> <span class="s">&#39;input&#39;</span> <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; plots the spike raster for the simulated net&quot;&quot;&quot;</span>
+        
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;Exc. spike trains&#39;</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="n">spikes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spikes</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spikes</span><span class="p">,[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">spikes</span><span class="p">),</span>\
+                <span class="s">&#39;b.&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="bp">self</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">:</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;Inh. spike trains&#39;</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="n">spikes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spikes</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spikes</span><span class="p">,[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">spikes</span><span class="p">),</span>\
+                <span class="s">&#39;r.&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>           
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time [ms]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Neuron number [#]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">simtime</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="c">#############################################</span>
+<span class="c"># Exc-Inh network class with connections (inherits from ExcInhNetBase)</span>
+<span class="c">#############################################</span>
+</div>
+<div class="viewcode-block" id="ExcInhNet"><a class="viewcode-back" href="../moose_cookbook.html#ExcInhNet_Ostojic2014_Brunel2000.ExcInhNet">[docs]</a><span class="k">class</span> <span class="nc">ExcInhNet</span><span class="p">(</span><span class="n">ExcInhNetBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Recurrent network simulation &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">J</span><span class="o">=</span><span class="n">J</span><span class="p">,</span><span class="n">incC</span><span class="o">=</span><span class="n">C</span><span class="p">,</span><span class="n">fC</span><span class="o">=</span><span class="n">fC</span><span class="p">,</span><span class="n">scaleI</span><span class="o">=</span><span class="n">g</span><span class="p">,</span><span class="n">syndelay</span><span class="o">=</span><span class="n">syndelay</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Overloads base (parent) class&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">J</span> <span class="o">=</span> <span class="n">J</span>              <span class="c"># exc connection weight</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">incC</span> <span class="o">=</span> <span class="n">incC</span>        <span class="c"># number of incoming connections per neuron</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fC</span> <span class="o">=</span> <span class="n">fC</span>            <span class="c"># fraction of exc incoming connections</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">excC</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fC</span><span class="o">*</span><span class="n">incC</span><span class="p">)</span><span class="c"># number of exc incoming connections</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaleI</span> <span class="o">=</span> <span class="n">scaleI</span>    <span class="c"># inh weight is scaleI*J</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">syndelay</span> <span class="o">=</span> <span class="n">syndelay</span><span class="c"># synaptic delay</span>
+                 
+        <span class="c"># call the parent class constructor</span>
+        <span class="n">ExcInhNetBase</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> 
+    
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="k">return</span> <span class="s">&quot;LIF network of </span><span class="si">%d</span><span class="s"> neurons &quot;</span>\
+             <span class="s">&quot;of which </span><span class="si">%d</span><span class="s"> are exc.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">)</span> 
+ 
+    <span class="k">def</span> <span class="nf">_init_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">ExcInhNetBase</span><span class="o">.</span><span class="n">_init_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">_init_plots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ExcInhNetBase</span><span class="o">.</span><span class="n">_init_plots</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_setup_network</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c">## Set up the neurons without connections</span>
+        <span class="n">ExcInhNetBase</span><span class="o">.</span><span class="n">_setup_network</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  
+
+        <span class="c">## Now, add in the connections...</span>
+        <span class="c">## Each LIF neuron has one incoming synapse SimpleSynHandler,</span>
+        <span class="c">##  which collects the activation from all presynaptic neurons</span>
+        <span class="c">## Each pre-synaptic spike cause Vm of post-neuron to rise by</span>
+        <span class="c">##  synaptic weight in one time step i.e. delta-fn synapse.</span>
+        <span class="c">## Since LIF neuron is derived from Compartment class,</span>
+        <span class="c">## conductance-based synapses (SynChan class) can also be used.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">syns</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">SimpleSynHandler</span><span class="p">(</span> <span class="s">&#39;/network/syns&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="p">);</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">syns</span><span class="p">,</span> <span class="s">&#39;activationOut&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="p">,</span> \
+            <span class="s">&#39;activation&#39;</span><span class="p">,</span> <span class="s">&#39;OneToOne&#39;</span> <span class="p">)</span>
+
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c"># set seed for reproducibility of simulations</span>
+        <span class="c">## Connections from some Exc/Inh neurons to each neuron</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">):</span>
+            <span class="c">## each neuron has incC number of synapses</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">syns</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">numSynapses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">incC</span>
+
+            <span class="c">## draw excC number of neuron indices out of NmaxExc neurons</span>
+            <span class="n">preIdxs</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">),</span><span class="bp">self</span><span class="o">.</span><span class="n">excC</span><span class="p">)</span>
+            <span class="c">## connect these presynaptically to i-th post-synaptic neuron</span>
+            <span class="k">for</span> <span class="n">synnum</span><span class="p">,</span><span class="n">preIdx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">preIdxs</span><span class="p">):</span>
+                <span class="n">synij</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">syns</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">synapse</span><span class="p">[</span><span class="n">synnum</span><span class="p">]</span>
+                <span class="n">connectExcId</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">preIdx</span><span class="p">],</span> \
+                    <span class="s">&#39;spikeOut&#39;</span><span class="p">,</span> <span class="n">synij</span><span class="p">,</span> <span class="s">&#39;addSpike&#39;</span><span class="p">)</span>
+                <span class="n">synij</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="n">syndelay</span>
+                <span class="n">synij</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">J</span>
+
+            <span class="c">## draw inhC=incC-excC number of neuron indices out of inhibitory neurons</span>
+            <span class="n">preIdxs</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">),</span><span class="bp">self</span><span class="o">.</span><span class="n">incC</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">excC</span><span class="p">)</span>
+            <span class="c">## connect these presynaptically to i-th post-synaptic neuron</span>
+            <span class="k">for</span> <span class="n">synnum</span><span class="p">,</span><span class="n">preIdx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">preIdxs</span><span class="p">):</span>
+                <span class="n">synij</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">syns</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">synapse</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">excC</span><span class="o">+</span><span class="n">synnum</span><span class="p">]</span>
+                <span class="n">connectInhId</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">preIdx</span><span class="p">],</span> \
+                    <span class="s">&#39;spikeOut&#39;</span><span class="p">,</span> <span class="n">synij</span><span class="p">,</span> <span class="s">&#39;addSpike&#39;</span><span class="p">)</span>
+                <span class="n">synij</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="n">syndelay</span>
+                <span class="n">synij</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">J</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">scaleI</span>
+
+<span class="c">#############################################</span>
+<span class="c"># Analysis functions</span>
+<span class="c">#############################################</span>
+</div>
+<div class="viewcode-block" id="rate_from_spiketrain"><a class="viewcode-back" href="../moose_cookbook.html#ExcInhNet_Ostojic2014_Brunel2000.rate_from_spiketrain">[docs]</a><span class="k">def</span> <span class="nf">rate_from_spiketrain</span><span class="p">(</span><span class="n">spiketimes</span><span class="p">,</span><span class="n">fulltime</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">tau</span><span class="o">=</span><span class="mf">50e-3</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns a rate series of spiketimes convolved with a Gaussian kernel;</span>
+<span class="sd">    all times must be in SI units.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">tau</span><span class="o">/</span><span class="mf">2.</span>
+    <span class="c">## normalized Gaussian kernel, integral with dt is normed to 1</span>
+    <span class="c">## to count as 1 spike smeared over a finite interval</span>
+    <span class="n">norm_factor</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span>
+    <span class="n">gauss_kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">norm_factor</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>\
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">5.</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span><span class="mf">5.</span><span class="o">*</span><span class="n">sigma</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span><span class="n">dt</span><span class="p">)])</span>
+    <span class="n">kernel_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">gauss_kernel</span><span class="p">)</span>
+    <span class="c">## need to accommodate half kernel_len on either side of fulltime</span>
+    <span class="n">rate_full</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">fulltime</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span><span class="o">+</span><span class="n">kernel_len</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">spiketime</span> <span class="ow">in</span> <span class="n">spiketimes</span><span class="p">:</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">spiketime</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span>
+        <span class="n">rate_full</span><span class="p">[</span><span class="n">idx</span><span class="p">:</span><span class="n">idx</span><span class="o">+</span><span class="n">kernel_len</span><span class="p">]</span> <span class="o">+=</span> <span class="n">gauss_kernel</span>
+    <span class="c">## only the middle fulltime part of the rate series</span>
+    <span class="c">## This is already in Hz,</span>
+    <span class="c">## since should have multiplied by dt for above convolution</span>
+    <span class="c">## and divided by dt to get a rate, so effectively not doing either.</span>
+    <span class="k">return</span> <span class="n">rate_full</span><span class="p">[</span><span class="n">kernel_len</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">kernel_len</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">fulltime</span><span class="o">/</span><span class="n">dt</span><span class="p">)]</span>
+
+<span class="c">#############################################</span>
+<span class="c"># Make plots</span>
+<span class="c">#############################################</span>
+</div>
+<span class="k">def</span> <span class="nf">extra_plots</span><span class="p">(</span><span class="n">net</span><span class="p">):</span>
+    <span class="c">## extra plots apart from the spike rasters</span>
+    <span class="c">## individual neuron Vm-s</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">tlen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">trange</span><span class="p">[:</span><span class="n">tlen</span><span class="p">],</span><span class="n">net</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">trange</span><span class="p">[:</span><span class="n">tlen</span><span class="p">],</span><span class="n">net</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">trange</span><span class="p">[:</span><span class="n">tlen</span><span class="p">],</span><span class="n">net</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;time (s)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Vm (V)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Vm-s of 3 LIF neurons (spike = reset).&quot;</span><span class="p">)</span>
+
+    <span class="n">timeseries</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">trange</span>
+    <span class="c">## individual neuron firing rates</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+    <span class="n">num_to_plot</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="c">#rates = []</span>
+    <span class="k">for</span> <span class="n">nrni</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_to_plot</span><span class="p">):</span>
+        <span class="n">rate</span> <span class="o">=</span> <span class="n">rate_from_spiketrain</span><span class="p">(</span>\
+            <span class="n">net</span><span class="o">.</span><span class="n">spikes</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">nrni</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span><span class="n">simtime</span><span class="p">,</span><span class="n">dt</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeseries</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">rate</span><span class="p">)],</span><span class="n">rate</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Rates of &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">num_to_plot</span><span class="p">)</span><span class="o">+</span><span class="s">&quot; exc nrns&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;Hz&quot;</span><span class="p">)</span>
+    <span class="c">#plt.ylim(0,100)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">nrni</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_to_plot</span><span class="p">):</span>
+        <span class="n">rate</span> <span class="o">=</span> <span class="n">rate_from_spiketrain</span><span class="p">(</span>\
+            <span class="n">net</span><span class="o">.</span><span class="n">spikes</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">net</span><span class="o">.</span><span class="n">NmaxExc</span><span class="o">+</span><span class="n">nrni</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span><span class="n">simtime</span><span class="p">,</span><span class="n">dt</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeseries</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">rate</span><span class="p">)],</span><span class="n">rate</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Rates of &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">num_to_plot</span><span class="p">)</span><span class="o">+</span><span class="s">&quot; inh nrns&quot;</span><span class="p">)</span>
+    <span class="c">#plt.ylim(0,100)</span>
+
+    <span class="c">## population firing rates</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+    <span class="n">allspikes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">nrni</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">):</span>
+        <span class="n">allspikes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">spikes</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">nrni</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+    <span class="c">#rate = rate_from_spiketrain(net.spikesExc.vector,simtime,dt)\</span>
+    <span class="c">#    /float(net.NmaxExc) # per neuron</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">rate_from_spiketrain</span><span class="p">(</span><span class="n">allspikes</span><span class="p">,</span><span class="n">simtime</span><span class="p">,</span><span class="n">dt</span><span class="p">)</span>\
+        <span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">)</span> <span class="c"># per neuron</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeseries</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">rate</span><span class="p">)],</span><span class="n">rate</span><span class="p">)</span>
+    <span class="c">#plt.ylim(0,100)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Exc population rate&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;Hz&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;Time (s)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">rate_from_spiketrain</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">spikesInh</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span><span class="n">simtime</span><span class="p">,</span><span class="n">dt</span><span class="p">)</span>\
+        <span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">N</span><span class="o">-</span><span class="n">net</span><span class="o">.</span><span class="n">NmaxExc</span><span class="p">)</span> <span class="c"># per neuron    </span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeseries</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">rate</span><span class="p">)],</span><span class="n">rate</span><span class="p">)</span>
+    <span class="c">#plt.ylim(0,100)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Inh population rate&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;Time (s)&quot;</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c">## ExcInhNetBase has unconnected neurons,</span>
+    <span class="c">## ExcInhNet connects them</span>
+    <span class="c">## Instantiate either ExcInhNetBase or ExcInhNet below</span>
+    <span class="c">#net = ExcInhNetBase(N=N)</span>
+    <span class="n">net</span> <span class="o">=</span> <span class="n">ExcInhNet</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">net</span>
+    <span class="c">## Important to distribute the initial Vm-s</span>
+    <span class="c">## else weak coupling gives periodic synchronous firing</span>
+    <span class="c">## not distributing Vm-s randomly to ensure match with Brian data</span>
+    <span class="c">#net.simulate(simtime,plotif=True,\</span>
+    <span class="c">#    v0=np.random.uniform(el-20e-3,vt,size=N))</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">simtime</span><span class="p">,</span><span class="n">plotif</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>\
+        <span class="n">v0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">el</span><span class="o">-</span><span class="mf">20e-3</span><span class="p">,</span><span class="n">vt</span><span class="p">,</span><span class="n">N</span><span class="p">))</span>
+
+    <span class="n">extra_plots</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Upinder Bhalla, Niraj Dudani, Aditya Gilra, Aviral Goel, Subhasis Ray and Dilawar Singh.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

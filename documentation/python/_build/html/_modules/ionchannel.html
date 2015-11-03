@@ -1,0 +1,530 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ionchannel &mdash; MOOSE 3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="MOOSE 3.0 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> MOOSE
+        
+
+        
+          
+          <img src="../_static/moose_logo.png" class="logo" />
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../moose_quickstart.html">1. Getting started with python scripting for MOOSE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#introduction">1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#importing-moose-and-accessing-built-in-documentation">1.2. Importing MOOSE and accessing built-in documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#creating-objects-and-traversing-the-object-hierarchy">1.2.1. Creating objects and traversing the object hierarchy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#setting-the-properties-of-elements-accessing-fields">1.3. Setting the properties of elements: accessing fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#putting-them-together-setting-up-connections">1.4. Putting them together: setting up connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#scheduling">1.5. Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#running-the-simulation">1.6. Running the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#some-more-details">1.7. Some more details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#vec-melement-and-element">1.7.1. <code class="docutils literal"><span class="pre">vec</span></code>, <code class="docutils literal"><span class="pre">melement</span></code> and <code class="docutils literal"><span class="pre">element</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_quickstart.html#finfos">1.7.2. <code class="docutils literal"><span class="pre">Finfos</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_quickstart.html#moving-on">1.8. Moving on</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_cookbook.html">2. MOOSE Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#loading-and-running-models">2.1. Loading and running models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#hello-moose-load-run-and-display-existing-models">2.1.1. Hello, MOOSE: Load, run and display existing models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#the-hodgkin-huxley-demo">2.1.2. The Hodgkin-Huxley demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#start-stop-and-setting-clocks">2.1.3. Start, Stop, and setting clocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#run-python-from-moose">2.1.4. Run Python from MOOSE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#accessing-and-tweaking-parameters">2.1.5. Accessing and tweaking parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#storing-simulation-output">2.1.6. Storing simulation output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#computing-arbitrary-functions-on-the-fly">2.1.7. Computing arbitrary functions on the fly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#solving-arbitrary-differential-equations">2.1.8. Solving arbitrary differential equations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#chemical-signaling-models">2.2. Chemical Signaling models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#running-with-different-numerical-methods">2.2.1. Running with different numerical methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#changing-volumes">2.2.2. Changing volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#feeding-tabulated-input-to-a-model">2.2.3. Feeding tabulated input to a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#finding-steady-states">2.2.4. Finding steady states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#making-a-dose-response-curve">2.2.5. Making a dose-response curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#building-a-chemical-model-from-parts">2.2.6. Building a chemical model from parts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#oscillation-models">2.2.7. Oscillation models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#bistability-models">2.2.8. Bistability models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-models">2.3. Reaction-diffusion models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-transport-in-a-tapering-cylinder">2.3.1. Reaction-diffusion + transport in a tapering cylinder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-turing-model">2.3.2. A Turing model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-spatial-bistable-model">2.3.3. A spatial bistable model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#reaction-diffusion-in-neurons">2.3.4. Reaction-diffusion in neurons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#transport-in-branching-dendritic-tree">2.3.5. Transport in branching dendritic tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#cross-compartment-reaction-systems">2.3.6. Cross-compartment reaction systems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#single-neuron-models">2.4. Single neuron models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#modeling-details">2.4.1. Modeling details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#neuronal-simulations-in-moosegui">2.4.2. Neuronal simulations in MOOSEGUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#demos">2.4.3. Demos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#loading-modifying-saving">2.4.4. Loading, modifying, saving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#explicit-vs-implict-methods">2.4.5. Explicit vs. implict methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#integrate-and-fire-models">2.4.6. Integrate-and-fire models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#the-hh-model">2.4.7. The HH model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#analyzing-spike-trains">2.4.8. Analyzing spike trains</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#network-models">2.5. Network models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#connecting-two-cells-via-a-synapse">2.5.1. Connecting two cells via a synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#plastic-synapse-stdp">2.5.2. Plastic synapse: STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#network-with-ca-based-plasticity">2.5.3. Network with Ca-based plasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#providing-random-input-to-a-cell">2.5.4. Providing random input to a cell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#recurrent-integrate-and-fire-network">2.5.5. Recurrent integrate-and-fire network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#recurrent-integrate-and-fire-network-with-plasticity">2.5.6. Recurrent integrate-and-fire network with plasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#a-feed-forward-network-with-random-input">2.5.7. A feed-forward network with random input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#using-compartmental-models-in-networks">2.5.8. Using compartmental models in networks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#multiscale-models">2.6. Multiscale models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#single-compartment-multiscale-model">2.6.1. Single-compartment multiscale model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#multi-compartment-multiscale-model">2.6.2. Multi-compartment multiscale model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../moose_cookbook.html#graphics">2.7. Graphics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#displaying-time-series-plots">2.7.1. Displaying time-series plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#animation-of-values-along-an-axis">2.7.2. Animation of values along an axis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moose_cookbook.html#using-moogli-widgets-to-display-a-neuron">2.7.3. Using MOOGLI widgets to display a neuron</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_builtins.html">3. MOOSE builtins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../moose_classes.html">4. MOOSE Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../moose_classes.html#alphabetical-listing-of-moose-classes">4.1. Alphabetical listing of moose classes</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">MOOSE</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      
+    <li>ionchannel</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for ionchannel</h1><div class="highlight"><pre>
+<span class="c"># ionchannel.py --- </span>
+<span class="c"># </span>
+<span class="c"># Filename: ionchannel.py</span>
+<span class="c"># Description: </span>
+<span class="c"># Author: Subhasis Ray</span>
+<span class="c"># Maintainer: </span>
+<span class="c"># Created: Wed Sep 17 10:33:20 2014 (+0530)</span>
+<span class="c"># Version: </span>
+<span class="c"># Last-Updated: </span>
+<span class="c">#           By: </span>
+<span class="c">#     Update #: 0</span>
+<span class="c"># URL: </span>
+<span class="c"># Keywords: </span>
+<span class="c"># Compatibility: </span>
+<span class="c"># </span>
+<span class="c"># </span>
+
+<span class="c"># Commentary: </span>
+<span class="c"># </span>
+<span class="c"># </span>
+<span class="c"># </span>
+<span class="c"># </span>
+
+<span class="c"># Change log:</span>
+<span class="c"># </span>
+<span class="c"># </span>
+<span class="c"># </span>
+<span class="c"># </span>
+<span class="c"># This program is free software; you can redistribute it and/or</span>
+<span class="c"># modify it under the terms of the GNU General Public License as</span>
+<span class="c"># published by the Free Software Foundation; either version 3, or</span>
+<span class="c"># (at your option) any later version.</span>
+<span class="c"># </span>
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="c"># General Public License for more details.</span>
+<span class="c"># </span>
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program; see the file COPYING.  If not, write to</span>
+<span class="c"># the Free Software Foundation, Inc., 51 Franklin Street, Fifth</span>
+<span class="c"># Floor, Boston, MA 02110-1301, USA.</span>
+<span class="c"># </span>
+<span class="c"># </span>
+
+<span class="c"># Code:</span>
+<span class="sd">&quot;&quot;&quot;This demo shows how to set the parameters for a Hodgkin-Huxley type ion channel.</span>
+
+<span class="sd">Hodgkin-Huxley type ion channels are composed of one or more gates</span>
+<span class="sd">that allow ions to cross the membrane. The gates transition between</span>
+<span class="sd">open and closed states and this, taken over a large population of</span>
+<span class="sd">ion channels over a patch of membrane has first order kinetics, where</span>
+<span class="sd">the rate of change of fraction of open gates (n) is given by::</span>
+
+<span class="sd">    dn/dt = alpha(Vm) * (1 - n) - beta(Vm) * n</span>
+
+<span class="sd">where alpha and beta are rate parameters for gate opening and</span>
+<span class="sd">closing respectively that depend on the membrane potential.</span>
+<span class="sd">The final channel conductance is computed as::</span>
+
+<span class="sd">    Gbar * m^x * h^y ...</span>
+
+<span class="sd">where m, n are the fraction of open gates of different types and x,</span>
+<span class="sd">y are the number of such gates in each channel. We can define the</span>
+<span class="sd">channel by specifying the alpha and beta parameters as functions of</span>
+<span class="sd">membrane potential and the exponents for each gate.</span>
+<span class="sd">The number gates is commonly one or two.</span>
+
+<span class="sd">Gate opening/closing rates have the form::</span>
+
+<span class="sd">    y(x) = (A + B * x) / (C + exp((x + D) / F))</span>
+
+<span class="sd">where x is membrane voltage and y is the rate parameter for gate</span>
+<span class="sd">closing or opening.</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">moose</span>
+
+<span class="n">EREST_ACT</span> <span class="o">=</span> <span class="o">-</span><span class="mf">70e-3</span> <span class="c">#: Resting membrane potential</span>
+
+
+<span class="c">#: The parameters for defining m as a function of Vm</span>
+<span class="n">Na_m_params</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e5</span> <span class="o">*</span> <span class="p">(</span><span class="mf">25e-3</span> <span class="o">+</span> <span class="n">EREST_ACT</span><span class="p">),</span>   <span class="c"># &#39;A_A&#39;:</span>
+                <span class="o">-</span><span class="mf">1e5</span><span class="p">,</span>                       <span class="c"># &#39;A_B&#39;:</span>
+                <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>                       <span class="c"># &#39;A_C&#39;:</span>
+                <span class="o">-</span><span class="mf">25e-3</span> <span class="o">-</span> <span class="n">EREST_ACT</span><span class="p">,</span>         <span class="c"># &#39;A_D&#39;:</span>
+               <span class="o">-</span><span class="mf">10e-3</span><span class="p">,</span>                      <span class="c"># &#39;A_F&#39;:</span>
+               <span class="mf">4e3</span><span class="p">,</span>                     <span class="c"># &#39;B_A&#39;:</span>
+                <span class="mf">0.0</span><span class="p">,</span>                        <span class="c"># &#39;B_B&#39;:</span>
+                <span class="mf">0.0</span><span class="p">,</span>                        <span class="c"># &#39;B_C&#39;:</span>
+                <span class="mf">0.0</span> <span class="o">-</span> <span class="n">EREST_ACT</span><span class="p">,</span>            <span class="c"># &#39;B_D&#39;:</span>
+                <span class="mf">18e-3</span>                       <span class="c"># &#39;B_F&#39;:    </span>
+               <span class="p">]</span>
+
+<span class="c">#: Parameters for defining h gate of Na+ channel</span>
+<span class="n">Na_h_params</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">70.0</span><span class="p">,</span>                        <span class="c"># &#39;A_A&#39;:</span>
+                <span class="mf">0.0</span><span class="p">,</span>                       <span class="c"># &#39;A_B&#39;:</span>
+                <span class="mf">0.0</span><span class="p">,</span>                       <span class="c"># &#39;A_C&#39;:</span>
+                <span class="mf">0.0</span> <span class="o">-</span> <span class="n">EREST_ACT</span><span class="p">,</span>           <span class="c"># &#39;A_D&#39;:</span>
+                <span class="mf">0.02</span><span class="p">,</span>                     <span class="c"># &#39;A_F&#39;:</span>
+                <span class="mf">1000.0</span><span class="p">,</span>                       <span class="c"># &#39;B_A&#39;:</span>
+                <span class="mf">0.0</span><span class="p">,</span>                       <span class="c"># &#39;B_B&#39;:</span>
+                <span class="mf">1.0</span><span class="p">,</span>                       <span class="c"># &#39;B_C&#39;:</span>
+                <span class="o">-</span><span class="mf">30e-3</span> <span class="o">-</span> <span class="n">EREST_ACT</span><span class="p">,</span>        <span class="c"># &#39;B_D&#39;:</span>
+                <span class="o">-</span><span class="mf">0.01</span>                    <span class="c"># &#39;B_F&#39;:       </span>
+                <span class="p">]</span>
+
+<span class="c">#: K+ channel in Hodgkin-Huxley model has only one gate, n and these</span>
+<span class="c">#are the parameters for the same</span>
+<span class="n">K_n_params</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">1e4</span> <span class="o">*</span> <span class="p">(</span><span class="mf">10e-3</span> <span class="o">+</span> <span class="n">EREST_ACT</span><span class="p">),</span>   <span class="c">#  &#39;A_A&#39;:</span>
+               <span class="o">-</span><span class="mf">1e4</span><span class="p">,</span>                      <span class="c">#  &#39;A_B&#39;:</span>
+               <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>                       <span class="c">#  &#39;A_C&#39;:</span>
+               <span class="o">-</span><span class="mf">10e-3</span> <span class="o">-</span> <span class="n">EREST_ACT</span><span class="p">,</span>         <span class="c">#  &#39;A_D&#39;:</span>
+               <span class="o">-</span><span class="mf">10e-3</span><span class="p">,</span>                     <span class="c">#  &#39;A_F&#39;:</span>
+               <span class="mf">0.125e3</span><span class="p">,</span>                   <span class="c">#  &#39;B_A&#39;:</span>
+               <span class="mf">0.0</span><span class="p">,</span>                        <span class="c">#  &#39;B_B&#39;:</span>
+               <span class="mf">0.0</span><span class="p">,</span>                        <span class="c">#  &#39;B_C&#39;:</span>
+               <span class="mf">0.0</span> <span class="o">-</span> <span class="n">EREST_ACT</span><span class="p">,</span>            <span class="c">#  &#39;B_D&#39;:</span>
+               <span class="mf">80e-3</span>                       <span class="c">#  &#39;B_F&#39;:  </span>
+               <span class="p">]</span>
+
+<span class="c">#: We define the rate parameters, which are functions of Vm as</span>
+<span class="c">#: interpolation tables looked up by membrane potential.</span>
+<span class="c">#: Minimum x-value for the interpolation table</span>
+<span class="n">VMIN</span> <span class="o">=</span> <span class="o">-</span><span class="mf">30e-3</span> <span class="o">+</span> <span class="n">EREST_ACT</span>
+<span class="c">#: Maximum x-value for the interpolation table</span>
+<span class="n">VMAX</span> <span class="o">=</span> <span class="mf">120e-3</span> <span class="o">+</span> <span class="n">EREST_ACT</span>
+<span class="c">#: Number of divisions in the interpolation table</span>
+<span class="n">VDIVS</span> <span class="o">=</span> <span class="mi">3000</span>
+
+<div class="viewcode-block" id="create_na_proto"><a class="viewcode-back" href="../moose_cookbook.html#ionchannel.create_na_proto">[docs]</a><span class="k">def</span> <span class="nf">create_na_proto</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Create and return a Na+ channel prototype &#39;/library/na&#39;</span>
+
+<span class="sd">    The Na+ channel conductance has the equation::</span>
+
+<span class="sd">        g = Gbar * m^3 * h </span>
+
+<span class="sd">    For each gate, we use the HHChannel.setupAlpha function to set up</span>
+<span class="sd">    the interpolation table.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lib</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Neutral</span><span class="p">(</span><span class="s">&#39;/library&#39;</span><span class="p">)</span>
+    <span class="n">na</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">HHChannel</span><span class="p">(</span><span class="s">&#39;/library/na&#39;</span><span class="p">)</span>
+    <span class="n">na</span><span class="o">.</span><span class="n">tick</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="c">#: The exponent for m gate is 3</span>
+    <span class="n">na</span><span class="o">.</span><span class="n">Xpower</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="c">#: channel/gateX is the m gate</span>
+    <span class="c">#: setting Xpower to a positive number automatically creates this gate.</span>
+    <span class="n">xGate</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">na</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s">&#39;/gateX&#39;</span><span class="p">)</span>    
+    <span class="n">xGate</span><span class="o">.</span><span class="n">setupAlpha</span><span class="p">(</span><span class="n">Na_m_params</span> <span class="o">+</span>
+                      <span class="p">[</span><span class="n">VDIVS</span><span class="p">,</span> <span class="n">VMIN</span><span class="p">,</span> <span class="n">VMAX</span><span class="p">])</span>
+    <span class="c">#: channel/gateY is the h gate</span>
+    <span class="c">#: Exponent for h gate is 1</span>
+    <span class="n">na</span><span class="o">.</span><span class="n">Ypower</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">yGate</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">na</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s">&#39;/gateY&#39;</span><span class="p">)</span>
+    <span class="n">yGate</span><span class="o">.</span><span class="n">setupAlpha</span><span class="p">(</span><span class="n">Na_h_params</span> <span class="o">+</span> 
+                      <span class="p">[</span><span class="n">VDIVS</span><span class="p">,</span> <span class="n">VMIN</span><span class="p">,</span> <span class="n">VMAX</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">na</span>
+    </div>
+<div class="viewcode-block" id="create_k_proto"><a class="viewcode-back" href="../moose_cookbook.html#ionchannel.create_k_proto">[docs]</a><span class="k">def</span> <span class="nf">create_k_proto</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Create and return a K+ channel prototype &#39;/library/k&#39;.</span>
+
+<span class="sd">    The K+ channel conductance has the equation::</span>
+
+<span class="sd">        g = Gbar * n^4</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lib</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Neutral</span><span class="p">(</span><span class="s">&#39;/library&#39;</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">HHChannel</span><span class="p">(</span><span class="s">&#39;/library/k&#39;</span><span class="p">)</span>
+    <span class="n">k</span><span class="o">.</span><span class="n">tick</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">k</span><span class="o">.</span><span class="n">Xpower</span> <span class="o">=</span> <span class="mf">4.0</span>
+    <span class="n">xGate</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">HHGate</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s">&#39;/gateX&#39;</span><span class="p">)</span>    
+    <span class="n">xGate</span><span class="o">.</span><span class="n">setupAlpha</span><span class="p">(</span><span class="n">K_n_params</span> <span class="o">+</span>
+                      <span class="p">[</span><span class="n">VDIVS</span><span class="p">,</span> <span class="n">VMIN</span><span class="p">,</span> <span class="n">VMAX</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">k</span>
+</div>
+<div class="viewcode-block" id="create_1comp_neuron"><a class="viewcode-back" href="../moose_cookbook.html#ionchannel.create_1comp_neuron">[docs]</a><span class="k">def</span> <span class="nf">create_1comp_neuron</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create single-compartmental neuron with Na+ and K+ channels.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        path of the compartment to be created</span>
+
+<span class="sd">    number : int </span>
+<span class="sd">        number of compartments to be created. If n is greater than 1,</span>
+<span class="sd">        we create a vec with that size, each having the same property.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    comp : moose.Compartment</span>
+<span class="sd">        a compartment vec with `number` elements.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">comps</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">vec</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">number</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;Compartment&#39;</span><span class="p">)</span>
+    <span class="n">diameter</span> <span class="o">=</span> <span class="mf">30e-6</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="mf">50e-6</span>
+    <span class="n">sarea</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">diameter</span> <span class="o">*</span> <span class="n">length</span>
+    <span class="n">xarea</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">diameter</span> <span class="o">*</span> <span class="n">diameter</span> <span class="o">/</span> <span class="mf">4.0</span>
+    <span class="n">Em</span> <span class="o">=</span> <span class="n">EREST_ACT</span> <span class="o">+</span> <span class="mf">10.613e-3</span>
+    <span class="n">comps</span><span class="o">.</span><span class="n">Em</span> <span class="o">=</span> <span class="n">Em</span>
+    <span class="n">comps</span><span class="o">.</span><span class="n">initVm</span> <span class="o">=</span> <span class="n">EREST_ACT</span>
+    <span class="c">#: CM = 1 uF/cm^2</span>
+    <span class="n">comps</span><span class="o">.</span><span class="n">Cm</span> <span class="o">=</span> <span class="mf">1e-6</span> <span class="o">*</span> <span class="n">sarea</span> <span class="o">*</span> <span class="mf">1e4</span>
+    <span class="c">#: RM = 0.3 mS/cm^2</span>
+    <span class="n">comps</span><span class="o">.</span><span class="n">Rm</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.3e-3</span> <span class="o">*</span> <span class="n">sarea</span> <span class="o">*</span> <span class="mf">1e4</span><span class="p">)</span>
+    <span class="n">container</span> <span class="o">=</span> <span class="n">comps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">path</span>
+    <span class="c">#: Here we create copies of the prototype channels</span>
+    <span class="n">nachan</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">create_na_proto</span><span class="p">(),</span> <span class="n">container</span><span class="p">,</span> <span class="s">&#39;na_{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">comps</span><span class="o">.</span><span class="n">name</span><span class="p">),</span> <span class="n">number</span><span class="p">)</span>
+    <span class="c">#: Gbar_Na = 120 mS/cm^2</span>
+    <span class="n">nachan</span><span class="o">.</span><span class="n">Gbar</span> <span class="o">=</span> <span class="p">[</span><span class="mf">120e-3</span> <span class="o">*</span> <span class="n">sarea</span> <span class="o">*</span> <span class="mf">1e4</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">nachan</span><span class="p">)</span>
+    <span class="n">nachan</span><span class="o">.</span><span class="n">Ek</span> <span class="o">=</span> <span class="mf">115e-3</span> <span class="o">+</span> <span class="n">EREST_ACT</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">nachan</span><span class="p">,</span> <span class="s">&#39;channel&#39;</span><span class="p">,</span> <span class="n">comps</span><span class="p">,</span> <span class="s">&#39;channel&#39;</span><span class="p">,</span> <span class="s">&#39;OneToOne&#39;</span><span class="p">)</span>
+    <span class="n">kchan</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">create_k_proto</span><span class="p">(),</span> <span class="n">container</span><span class="p">,</span> <span class="s">&#39;k_{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">comps</span><span class="o">.</span><span class="n">name</span><span class="p">),</span> <span class="n">number</span><span class="p">)</span>
+    <span class="c">#: Gbar_K = 36 mS/cm^2</span>
+    <span class="n">kchan</span><span class="o">.</span><span class="n">Gbar</span> <span class="o">=</span> <span class="mf">36e-3</span> <span class="o">*</span> <span class="n">sarea</span> <span class="o">*</span> <span class="mf">1e4</span>
+    <span class="n">kchan</span><span class="o">.</span><span class="n">Ek</span> <span class="o">=</span> <span class="o">-</span><span class="mf">12e-3</span> <span class="o">+</span> <span class="n">EREST_ACT</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">kchan</span><span class="p">,</span> <span class="s">&#39;channel&#39;</span><span class="p">,</span> <span class="n">comps</span><span class="p">,</span> <span class="s">&#39;channel&#39;</span><span class="p">,</span> <span class="s">&#39;OneToOne&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">comps</span>
+</div>
+<div class="viewcode-block" id="current_step_test"><a class="viewcode-back" href="../moose_cookbook.html#ionchannel.current_step_test">[docs]</a><span class="k">def</span> <span class="nf">current_step_test</span><span class="p">(</span><span class="n">simtime</span><span class="p">,</span> <span class="n">simdt</span><span class="p">,</span> <span class="n">plotdt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a single compartment and set it up for applying a step</span>
+<span class="sd">    current injection.</span>
+
+<span class="sd">    We use a PulseGen object to generate a 40 ms wide 1 nA current</span>
+<span class="sd">    pulse that starts 20 ms after start of simulation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Neutral</span><span class="p">(</span><span class="s">&#39;/model&#39;</span><span class="p">)</span>
+    <span class="n">comp</span> <span class="o">=</span> <span class="n">create_1comp_neuron</span><span class="p">(</span><span class="s">&#39;/model/neuron&#39;</span><span class="p">)</span>
+    <span class="n">stim</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">PulseGen</span><span class="p">(</span><span class="s">&#39;/model/stimulus&#39;</span><span class="p">)</span>
+    <span class="n">stim</span><span class="o">.</span><span class="n">delay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">20e-3</span>
+    <span class="n">stim</span><span class="o">.</span><span class="n">level</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e-9</span>
+    <span class="n">stim</span><span class="o">.</span><span class="n">width</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">40e-3</span>
+    <span class="n">stim</span><span class="o">.</span><span class="n">delay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e9</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">stim</span><span class="p">,</span> <span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="s">&#39;injectMsg&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Neutral</span><span class="p">(</span><span class="s">&#39;/data&#39;</span><span class="p">)</span>
+    <span class="n">current_tab</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;/data/current&#39;</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">current_tab</span><span class="p">,</span> <span class="s">&#39;requestOut&#39;</span><span class="p">,</span> <span class="n">stim</span><span class="p">,</span> <span class="s">&#39;getOutputValue&#39;</span><span class="p">)</span>
+    <span class="n">vm_tab</span> <span class="o">=</span> <span class="n">moose</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;/data/Vm&#39;</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">vm_tab</span><span class="p">,</span> <span class="s">&#39;requestOut&#39;</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="s">&#39;getVm&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">simdt</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">setClock</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">plotdt</span><span class="p">)</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">reinit</span><span class="p">()</span>
+    <span class="n">moose</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">simtime</span><span class="p">)</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">simtime</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">vm_tab</span><span class="o">.</span><span class="n">vector</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ts</span><span class="p">,</span> <span class="n">current_tab</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span> <span class="n">vm_tab</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span>
+    </div>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">simtime</span> <span class="o">=</span> <span class="mf">0.1</span>
+    <span class="n">simdt</span> <span class="o">=</span> <span class="mf">0.25e-5</span>
+    <span class="n">plotdt</span> <span class="o">=</span> <span class="mf">0.25e-3</span>
+    <span class="n">ts</span><span class="p">,</span> <span class="n">current</span><span class="p">,</span> <span class="n">vm</span> <span class="o">=</span> <span class="n">current_step_test</span><span class="p">(</span><span class="n">simtime</span><span class="p">,</span> <span class="n">simdt</span><span class="p">,</span> <span class="n">plotdt</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">vm</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Vm (mV)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">current</span> <span class="o">*</span> <span class="mf">1e9</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;current (nA)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+
+<span class="c"># </span>
+<span class="c"># ionchannel.py ends here</span>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Upinder Bhalla, Niraj Dudani, Aditya Gilra, Aviral Goel, Subhasis Ray and Dilawar Singh.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

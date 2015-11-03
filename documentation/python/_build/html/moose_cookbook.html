@@ -1,0 +1,915 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. MOOSE Cookbook &mdash; MOOSE 3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="MOOSE 3.0 documentation" href="index.html"/>
+        <link rel="next" title="3. MOOSE builtins" href="moose_builtins.html"/>
+        <link rel="prev" title="1. Getting started with python scripting for MOOSE" href="moose_quickstart.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> MOOSE
+        
+
+        
+          
+          <img src="_static/moose_logo.png" class="logo" />
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="moose_quickstart.html">1. Getting started with python scripting for MOOSE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="moose_quickstart.html#introduction">1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moose_quickstart.html#importing-moose-and-accessing-built-in-documentation">1.2. Importing MOOSE and accessing built-in documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="moose_quickstart.html#creating-objects-and-traversing-the-object-hierarchy">1.2.1. Creating objects and traversing the object hierarchy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="moose_quickstart.html#setting-the-properties-of-elements-accessing-fields">1.3. Setting the properties of elements: accessing fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moose_quickstart.html#putting-them-together-setting-up-connections">1.4. Putting them together: setting up connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moose_quickstart.html#scheduling">1.5. Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moose_quickstart.html#running-the-simulation">1.6. Running the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moose_quickstart.html#some-more-details">1.7. Some more details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="moose_quickstart.html#vec-melement-and-element">1.7.1. <code class="docutils literal"><span class="pre">vec</span></code>, <code class="docutils literal"><span class="pre">melement</span></code> and <code class="docutils literal"><span class="pre">element</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="moose_quickstart.html#finfos">1.7.2. <code class="docutils literal"><span class="pre">Finfos</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="moose_quickstart.html#moving-on">1.8. Moving on</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">2. MOOSE Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#loading-and-running-models">2.1. Loading and running models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hello-moose-load-run-and-display-existing-models">2.1.1. Hello, MOOSE: Load, run and display existing models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-hodgkin-huxley-demo">2.1.2. The Hodgkin-Huxley demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-stop-and-setting-clocks">2.1.3. Start, Stop, and setting clocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-python-from-moose">2.1.4. Run Python from MOOSE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-and-tweaking-parameters">2.1.5. Accessing and tweaking parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storing-simulation-output">2.1.6. Storing simulation output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computing-arbitrary-functions-on-the-fly">2.1.7. Computing arbitrary functions on the fly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solving-arbitrary-differential-equations">2.1.8. Solving arbitrary differential equations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#chemical-signaling-models">2.2. Chemical Signaling models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-with-different-numerical-methods">2.2.1. Running with different numerical methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-volumes">2.2.2. Changing volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#feeding-tabulated-input-to-a-model">2.2.3. Feeding tabulated input to a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finding-steady-states">2.2.4. Finding steady states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-a-dose-response-curve">2.2.5. Making a dose-response curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-a-chemical-model-from-parts">2.2.6. Building a chemical model from parts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oscillation-models">2.2.7. Oscillation models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bistability-models">2.2.8. Bistability models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reaction-diffusion-models">2.3. Reaction-diffusion models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reaction-diffusion-transport-in-a-tapering-cylinder">2.3.1. Reaction-diffusion + transport in a tapering cylinder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-turing-model">2.3.2. A Turing model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-spatial-bistable-model">2.3.3. A spatial bistable model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reaction-diffusion-in-neurons">2.3.4. Reaction-diffusion in neurons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transport-in-branching-dendritic-tree">2.3.5. Transport in branching dendritic tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-compartment-reaction-systems">2.3.6. Cross-compartment reaction systems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#single-neuron-models">2.4. Single neuron models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modeling-details">2.4.1. Modeling details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#neuronal-simulations-in-moosegui">2.4.2. Neuronal simulations in MOOSEGUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demos">2.4.3. Demos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-modifying-saving">2.4.4. Loading, modifying, saving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explicit-vs-implict-methods">2.4.5. Explicit vs. implict methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrate-and-fire-models">2.4.6. Integrate-and-fire models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-hh-model">2.4.7. The HH model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analyzing-spike-trains">2.4.8. Analyzing spike trains</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#network-models">2.5. Network models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-two-cells-via-a-synapse">2.5.1. Connecting two cells via a synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plastic-synapse-stdp">2.5.2. Plastic synapse: STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-with-ca-based-plasticity">2.5.3. Network with Ca-based plasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#providing-random-input-to-a-cell">2.5.4. Providing random input to a cell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recurrent-integrate-and-fire-network">2.5.5. Recurrent integrate-and-fire network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recurrent-integrate-and-fire-network-with-plasticity">2.5.6. Recurrent integrate-and-fire network with plasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-feed-forward-network-with-random-input">2.5.7. A feed-forward network with random input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-compartmental-models-in-networks">2.5.8. Using compartmental models in networks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#multiscale-models">2.6. Multiscale models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#single-compartment-multiscale-model">2.6.1. Single-compartment multiscale model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-compartment-multiscale-model">2.6.2. Multi-compartment multiscale model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#graphics">2.7. Graphics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#displaying-time-series-plots">2.7.1. Displaying time-series plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#animation-of-values-along-an-axis">2.7.2. Animation of values along an axis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-moogli-widgets-to-display-a-neuron">2.7.3. Using MOOGLI widgets to display a neuron</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="moose_builtins.html">3. MOOSE builtins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moose_classes.html">4. MOOSE Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="moose_classes.html#alphabetical-listing-of-moose-classes">4.1. Alphabetical listing of moose classes</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">MOOSE</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>2. MOOSE Cookbook</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/moose_cookbook.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="moose-cookbook">
+<h1>2. MOOSE Cookbook<a class="headerlink" href="#moose-cookbook" title="Permalink to this headline">¶</a></h1>
+<p>The MOOSE Cookbook contains recipes showing you how to do specific
+tasks in MOOSE.</p>
+<div class="section" id="loading-and-running-models">
+<h2>2.1. Loading and running models<a class="headerlink" href="#loading-and-running-models" title="Permalink to this headline">¶</a></h2>
+<p>This section of the documentation explains how to load and run predefined
+models in MOOSE.</p>
+<div class="section" id="hello-moose-load-run-and-display-existing-models">
+<h3>2.1.1. Hello, MOOSE: Load, run and display existing models<a class="headerlink" href="#hello-moose-load-run-and-display-existing-models" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="the-hodgkin-huxley-demo">
+<span id="squid"></span><h3>2.1.2. The Hodgkin-Huxley demo<a class="headerlink" href="#the-hodgkin-huxley-demo" title="Permalink to this headline">¶</a></h3>
+<p>This is a self-contained graphical demo implemented by Subhasis Ray,
+closely based on the &#8216;Squid&#8217; demo by Mark Nelson which ran in GENESIS.</p>
+<div class="figure" id="id2">
+<img alt="Hodgkin-Huxley's squid giant axon experiment" src="_images/squid_demo.png" />
+<p class="caption"><span class="caption-text">Simulation of Hodgkin-Huxley&#8217;s experiment on squid giant axon
+showing action potentials generated by a step current injection.</span></p>
+</div>
+<p>The demo has built-in documentation and may be run from the
+<code class="docutils literal"><span class="pre">Demos/squid</span></code> subdirectory of MOOSE. If you want to read a simpler
+implementation of the same (without the code for setting up GUI),
+check out <span class="xref std std-ref">hhmodel</span>.</p>
+</div>
+<div class="section" id="start-stop-and-setting-clocks">
+<h3>2.1.3. Start, Stop, and setting clocks<a class="headerlink" href="#start-stop-and-setting-clocks" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="run-python-from-moose">
+<h3>2.1.4. Run Python from MOOSE<a class="headerlink" href="#run-python-from-moose" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="accessing-and-tweaking-parameters">
+<h3>2.1.5. Accessing and tweaking parameters<a class="headerlink" href="#accessing-and-tweaking-parameters" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="Three oscillation patterns after tweaking model parameters." src="_images/tweakingParameters.png" />
+</div>
+</div>
+<div class="section" id="storing-simulation-output">
+<h3>2.1.6. Storing simulation output<a class="headerlink" href="#storing-simulation-output" title="Permalink to this headline">¶</a></h3>
+<p>Here we&#8217;ll show how to store and dump from a table and also using HDF5.</p>
+</div>
+<div class="section" id="computing-arbitrary-functions-on-the-fly">
+<h3>2.1.7. Computing arbitrary functions on the fly<a class="headerlink" href="#computing-arbitrary-functions-on-the-fly" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes you want to calculate arbitrary function of the state
+variables of one or more elements and feed the result into another
+element during a simulation. The Function class is useful for this.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/function.png"><img alt="Outputs of Function object calculating z = c0 * exp(c1 * x) * cos(y)" src="_images/function.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+</div>
+<div class="section" id="solving-arbitrary-differential-equations">
+<h3>2.1.8. Solving arbitrary differential equations<a class="headerlink" href="#solving-arbitrary-differential-equations" title="Permalink to this headline">¶</a></h3>
+<p>The Function classes are also useful for setting up arbitrary differential
+equations. MOOSE supports solution of such equation systems, with the
+caveat that it thinks they should be chemical systems and therefore
+interprets the variables as concentrations. MOOSE does not permit the
+concentrations to go negative.</p>
+<p>This limitation on positive solutions can be overcome with offsets to the
+variables.</p>
+<p>It is also possible to set up other forms of differential equations,
+where instead of directly controlling the rate of change of a pool, the
+equations take the form of modifying the rate of a reaction involving
+a pool.</p>
+<p>The solutions of such systems are much more accurate and faster using the
+chemical kinetic solver than with the basic exponential Euler method.
+However, it is important to point out that the use of arbitrary
+differential equations to represent chemical systems is
+discouraged in MOOSE. This is for the simple reason that they are
+abstractions, frequently with serious flaws, of the underlying chemistry.
+At the current time the stochastic solver cannot handle systems formulated
+with functions rather than chemical objects.</p>
+</div>
+</div>
+<div class="section" id="chemical-signaling-models">
+<h2>2.2. Chemical Signaling models<a class="headerlink" href="#chemical-signaling-models" title="Permalink to this headline">¶</a></h2>
+<p>This section of the documentation explains how to do operations specific
+to the chemical signaling.</p>
+<div class="section" id="running-with-different-numerical-methods">
+<h3>2.2.1. Running with different numerical methods<a class="headerlink" href="#running-with-different-numerical-methods" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="changing-volumes">
+<h3>2.2.2. Changing volumes<a class="headerlink" href="#changing-volumes" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="feeding-tabulated-input-to-a-model">
+<h3>2.2.3. Feeding tabulated input to a model<a class="headerlink" href="#feeding-tabulated-input-to-a-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="finding-steady-states">
+<h3>2.2.4. Finding steady states<a class="headerlink" href="#finding-steady-states" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="making-a-dose-response-curve">
+<h3>2.2.5. Making a dose-response curve<a class="headerlink" href="#making-a-dose-response-curve" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="Dose-response curve example for a bistable system." src="_images/chemDoseResponse.png" />
+</div>
+</div>
+<div class="section" id="building-a-chemical-model-from-parts">
+<h3>2.2.6. Building a chemical model from parts<a class="headerlink" href="#building-a-chemical-model-from-parts" title="Permalink to this headline">¶</a></h3>
+<p>Disclaimer: Avoid doing this for all but the very simplest models. This
+is error-prone, tedious, and non-portable. For preference use one of the
+standard model formats like SBML, which MOOSE and many other tools can
+read and write.</p>
+<p>Nevertheless, it is useful to see how these models are set up.
+There are several tutorials and snippets that build the entire chemical
+model system using the basic MOOSE calls. The sequence of steps is
+typically:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Create container (chemical compartment) for model. This is typically
+a CubeMesh, a CylMesh, and if you really know what you are doing,
+a NeuroMesh.</p>
+</li>
+<li><p class="first">Create the reaction components: pools of molecules <strong>moose.Pool</strong>;
+reactions <strong>moose.Reac</strong>; and enzymes <strong>moose.Enz</strong>. Note that when
+creating an enzyme, one must also create a molecule beneath it to
+serve as the enzyme-substrate complex.  Other less-used
+components include Michaelis-Menten enzymes <strong>moose.MMenz</strong>, input
+tables, pulse generators and so on. These are illustrated in other
+examples.</p>
+</li>
+<li><p class="first">Assign parameters for the components.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Compartments have a <strong>volume</strong>, and each subtype will have
+quite elaborate options for partitioning the compartment
+into voxels.</li>
+<li><strong>Pool</strong> s have one key parameter, the initial
+concentration <strong>concInit</strong>.</li>
+<li><strong>Reac</strong> tions have two parameters: <strong>Kf</strong> and <strong>Kb</strong>.</li>
+<li><strong>Enz</strong> ymes have two primary parameters <strong>kcat</strong> and <strong>Km</strong>.
+That is enough for <strong>MMenz</strong> ymes. Regular <strong>Enz</strong> ymes have
+an additional parameter <strong>k2</strong> which by default is set to 4.0
+times <strong>kcat</strong>, but you may also wish to explicitly assign it
+if you know its value.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Connect up the reaction system using moose messaging.</p>
+</li>
+<li><p class="first">Create and connect up input and output tables as needed.</p>
+</li>
+<li><p class="first">Create and connect up the solvers as needed. This has to be done
+in a specific order. Examples are linked below, but briefly the
+order is:</p>
+<ol class="loweralpha simple">
+<li>Make the compartment and reaction system.</li>
+<li>Make the Ksolve or Gsolve.</li>
+<li>Make the Stoich.</li>
+<li>Assign <strong>stoich.compartment</strong> to the compartment</li>
+<li>Assign <strong>stoich.ksolve</strong> to either the Ksolve or Gsolve.</li>
+<li>Assign <strong>stoich.path</strong> to finally fill in the reaction system.</li>
+</ol>
+<p>There is an additional step if diffusion is also present, see
+<a href="#id4"><span class="problematic" id="id5">`Reaction-diffusion in a cylinder`_</span></a>.</p>
+</li>
+</ol>
+</div></blockquote>
+<p>Some examples of doing this are in:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#making-a-dose-response-curve">Making a dose-response curve</a> , which defines a small bistable
+system including three <strong>Pool</strong> s, two <strong>Enz</strong> ymes and a
+<strong>Reac</strong> tion.</li>
+<li><a class="reference internal" href="#feeding-tabulated-input-to-a-model">Feeding tabulated input to a model</a>, which shows how to connect up
+a <strong>StimulusTable</strong> object to a simple 2-molecule reaction.</li>
+<li><a href="#id6"><span class="problematic" id="id7">`Reaction-diffusion in a cylinder`_</span></a>, which defines a simple binding
+reaction and embeds it in a 1-dimensional diffusive volume of
+a cylinder.</li>
+</ul>
+</div></blockquote>
+<p>The recommended way to build a chemical model, of course, is to load it
+in from a file format specific to such models. MOOSE understands
+<strong>SBML</strong>, <strong>kkit.g</strong> (a legacy GENESIS format), and <strong>cspace</strong>
+(a very compact format used in a large study of bistables from
+Ramakrishnan and Bhalla, PLoS Comp. Biol 2008).</p>
+<p>One key concept is that in MOOSE the components, messaging, and access
+to model components is identical regardless of whether the model was
+built from parts, or loaded in from a file. All that the file loaders do
+is to use the file to automate the steps above. Thus the model components
+and their fields are completely accessible from the script even if
+the model has been loaded from a file. See
+<a class="reference internal" href="#accessing-and-tweaking-parameters">Accessing and tweaking parameters</a> for an example of this.</p>
+</div>
+<div class="section" id="oscillation-models">
+<h3>2.2.7. Oscillation models<a class="headerlink" href="#oscillation-models" title="Permalink to this headline">¶</a></h3>
+<p>There are several chemical oscillators defined in the
+<code class="docutils literal"><span class="pre">Demos/tutorials/ChemkcalOscillators</span></code> directory. These include:</p>
+<ol class="arabic simple">
+<li>Slow Feedback Oscillator based on a model by Boris Kholdenko</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Repressilator, based on Elowitz and Liebler, Nature 2000.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Relaxation oscillator.</li>
+</ol>
+</div>
+<div class="section" id="bistability-models">
+<h3>2.2.8. Bistability models<a class="headerlink" href="#bistability-models" title="Permalink to this headline">¶</a></h3>
+<p>There are several bistable models defined in the
+<code class="docutils literal"><span class="pre">Demos/tutorials/ChemkcalBistables</span></code> directory. These include:</p>
+<ol class="arabic simple">
+<li>MAPK feedback loop model.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Simple minimal bistable model, run stochastically at different volumes
+to illustrate the effects of chemical noise.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Strongly bistable model.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="reaction-diffusion-models">
+<h2>2.3. Reaction-diffusion models<a class="headerlink" href="#reaction-diffusion-models" title="Permalink to this headline">¶</a></h2>
+<p>The MOOSE design for reaction-diffusion is to specify one or
+more cellular &#8216;compartments&#8217;, and embed reaction systems in each of them.</p>
+<p>A &#8216;compartment&#8217;, in the context of reaction-diffusion, is used in the
+cellular sense of a biochemically defined,
+volume restricted subpart of a cell. Many but not all compartments
+are bounded by a cell membrane, but biochemically the membrane itself
+may form a compartment. Note that this interpretation differs from that
+of a &#8216;compartment&#8217; in detailed electrical models of neurons.</p>
+<p>A reaction system can be loaded in from any of the supported MOOSE
+formats, or built within Python from MOOSE parts.</p>
+<p>The computations for such models are done by a set of objects:
+Stoich, Ksolve and Dsolve. Respectively, these handle the model
+reactions and stoichiometry matrix, the reaction computations for
+each voxel, and the diffusion between voxels. The &#8216;Compartment&#8217; specifies
+how the model should be spatially discretized.</p>
+<div class="section" id="reaction-diffusion-transport-in-a-tapering-cylinder">
+<h3>2.3.1. Reaction-diffusion + transport in a tapering cylinder<a class="headerlink" href="#reaction-diffusion-transport-in-a-tapering-cylinder" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="a-turing-model">
+<h3>2.3.2. A Turing model<a class="headerlink" href="#a-turing-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="a-spatial-bistable-model">
+<h3>2.3.3. A spatial bistable model<a class="headerlink" href="#a-spatial-bistable-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="reaction-diffusion-in-neurons">
+<h3>2.3.4. Reaction-diffusion in neurons<a class="headerlink" href="#reaction-diffusion-in-neurons" title="Permalink to this headline">¶</a></h3>
+<p>Reaction-diffusion systems can easily be embedded into neuronal geometries.
+MOOSE does so by treating each neuron as a pseudo 1-dimensional object.
+This means that diffusion only happens along the axis of dendritic
+segments, not radially from inside to outside a dendrite, nor tangentially
+around the dendrite circumference.
+Here we illustrate two cases. The simple case treats the entire neuron
+as a single, chemically equivalent reaction-diffusion system in a binary
+branching neuronal tree. The more complex example shows how to set up
+three chemically distinct kinds of subdivisions within the neuron:
+the dendritic tree, the dendritic spine heads, and the postsynaptic
+densities. In both examples we embed a simple Turing-like spatial oscillator
+in every compartment of the model neurons, so as to see nice oscillations
+and animations. The first example has a particularly striking pseudo-3D
+rendition of the neuron and the molecular spatial oscillations within it.</p>
+<div class="figure">
+<img alt="Pseudo-3-D rendition of branching neuron and the concs in it." src="_images/reacDiffBranchingNeuron.png" />
+</div>
+</div>
+<div class="section" id="transport-in-branching-dendritic-tree">
+<h3>2.3.5. Transport in branching dendritic tree<a class="headerlink" href="#transport-in-branching-dendritic-tree" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="cross-compartment-reaction-systems">
+<h3>2.3.6. Cross-compartment reaction systems<a class="headerlink" href="#cross-compartment-reaction-systems" title="Permalink to this headline">¶</a></h3>
+<p>Frequently reaction systems span cellular (chemical) compartments.
+For example, a membrane-bound molecule may be phosphorylated by a
+cytosolic kinase, using soluble ATP as one of the substrates. Here the
+membrane and the cytsol are different chemical compartments.
+MOOSE supports such reactions. The following snippets illustrate
+cross-compartment chemistry. Note that the interpretation of the rates
+of enzymes and reactions does depend on which compartment they reside in.</p>
+</div>
+</div>
+<div class="section" id="single-neuron-models">
+<h2>2.4. Single neuron models<a class="headerlink" href="#single-neuron-models" title="Permalink to this headline">¶</a></h2>
+<p>Neurons are modelled as equivalent electrical circuits. The morphology
+of a neuron can be broken into isopotential compartments connected by
+axial resistances R<sub>a</sub> denoting the cytoplasmic
+resistance. In each compartment, the neuronal membrane is represented as
+a capacitance C<sub>m</sub> with a shunt leak resistance
+R<sub>m</sub>. Electrochemical gradient (due to ion pumps)
+across the leaky membrane causes a voltage drive E<sub>m</sub>,
+that hyperpolarizes the inside of the cell membrane compared to the
+outside.</p>
+<p>Each voltage dependent ion channel, present on the membrane, is modelled
+as a voltage dependent conductance G<sub>k</sub> with gating
+kinetics, in series with an electrochemical voltage drive (battery)
+E<sub>k</sub>, across the membrane capacitance
+C<sub>m</sub>, as in the figure below.</p>
+<hr class="docutils" />
+<div class="figure align-center" id="id3">
+<img alt="**Equivalent circuit of neuronal compartments**" src="_images/neuroncompartment.png" />
+<p class="caption"><span class="caption-text"><strong>Equivalent circuit of neuronal compartments</strong></span></p>
+</div>
+<hr class="docutils" />
+<p>Neurons fire action potentials / spikes (sharp rise and fall of membrane
+potential V<sub>m</sub>) due to voltage dependent channels.
+These result in opening of excitatory / inhibitory synaptic channels
+(conductances with batteries, similar to voltage gated channels) on
+other connected neurons in the network.</p>
+<p>MOOSE can handle large networks of detailed neurons, each with
+complicated channel dynamics. Further, MOOSE can integrate chemical
+signalling with electrical activity. Presently, creating and simulating
+these requires PyMOOSE scripting, but these will be incorporated into
+the GUI in the future.</p>
+<p>To understand channel kinetics and neuronal action potentials, run the
+Squid Axon demo installed along with MOOSEGUI and consult its
+help/tutorial.</p>
+<p>Read more about compartmental modelling in the first few chapters of the
+<a class="reference external" href="http://www.genesis-sim.org/GENESIS/iBoG/iBoGpdf/index.html">Book of
+Genesis</a>.</p>
+<p>Models can be defined in <a class="reference external" href="http://www.neuroml.org">NeuroML</a>, an XML
+format which is mostly supported across simulators. Channels, neuronal
+morphology (compartments), and networks can be specified using various
+levels of NeuroML, namely ChannelML, MorphML and NetworkML. Importing of
+cell models in the <a class="reference external" href="http://www.genesis-sim.org/GENESIS">GENESIS</a>
+.p format is supported for backwards compatibitility.</p>
+<div class="section" id="modeling-details">
+<h3>2.4.1. Modeling details<a class="headerlink" href="#modeling-details" title="Permalink to this headline">¶</a></h3>
+<p>Some salient properties of neuronal building blocks in MOOSE are
+described below. Variables that are updated at every simulation time
+step are are listed <strong>dynamical</strong>. Rest are parameters.</p>
+<ul>
+<li><p class="first"><strong>Compartment</strong>
+When you select a compartment, you can view and edit its properties
+in the right pane. V<sub>m</sub> and I<sub>m</sub>are plot-able.</p>
+<ul>
+<li><dl class="first docutils">
+<dt>V<sub>m</sub></dt>
+<dd><p class="first last">membrane potential (across C<sub>m</sub>) in Volts. It is a
+dynamical variable.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>C<sub>m</sub></dt>
+<dd><p class="first last">membrane capacitance in Farads.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>E<sub>m</sub></dt>
+<dd><p class="first last">membrane leak potential in Volts due
+to the electrochemical gradient setup by ion pumps.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>I<sub>m</sub></dt>
+<dd><p class="first last">current in Amperes across the membrane via leak resistance R<sub>m</sub>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>inject</dt>
+<dd><p class="first last">current in Amperes injected externally into the compartment.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>initVm</dt>
+<dd><p class="first last">initial V<sub>m</sub> in Volts.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>R<sub>m</sub></dt>
+<dd><p class="first last">membrane leak resistance in Ohms due to leaky channels.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>diameter</dt>
+<dd><p class="first last">diameter of the compartment in metres.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>length</dt>
+<dd><p class="first last">length of the compartment in metres.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><dl class="first docutils">
+<dt><strong>HHChannel</strong></dt>
+<dd><p class="first last">Hodgkin-Huxley channel with voltage dependent dynamical gates.</p>
+</dd>
+</dl>
+<ul>
+<li><dl class="first docutils">
+<dt>Gbar</dt>
+<dd><p class="first last">peak channel conductance in Siemens.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>E<sub>k</sub></dt>
+<dd><p class="first last">reversal potential of the channel, due to electrochemical
+gradient of the ion(s) it allows.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>G<sub>k</sub></dt>
+<dd><p class="first last">conductance of the channel in Siemens.
+G<sub>k</sub>(t) = Gbar × X(t)<sup>Xpower</sup> ×
+Y(t)<sup>Ypower</sup> × Z(t)<sup>Zpower</sup></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>I<sub>k</sub></dt>
+<dd><dl class="first last docutils">
+<dt>current through the channel into the neuron in Amperes.</dt>
+<dd><p class="first last">I<sub>k</sub>(t) = G<sub>k</sub>(t) ×
+(E<sub>k</sub>-V<sub>m</sub>(t))</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>X, Y, Z</dt>
+<dd><p class="first">gating variables (range 0.0 to 1.0) that may turn on or off as
+voltage increases with different time constants.</p>
+<blockquote class="last">
+<div><p>dX(t)/dt = X<sub>inf</sub>/τ - X(t)/τ</p>
+<p>Here, X<sub>inf</sub> and τ are typically
+sigmoidal/linear/linear-sigmoidal functions of membrane
+potential V<sub>m</sub>, which are described in a ChannelML
+file and presently not editable from MOOSEGUI. Thus, a gate
+may open (X<sub>inf</sub>(V<sub>m</sub>) → 1) or close (X<sub>inf</sub>(V<sub>m</sub>) → 0) on increasing V<sub>m</sub>, with time constant τ(V<sub>m</sub>).</p>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Xpower, Ypower, Zpower</dt>
+<dd><p class="first last">powers to which gates are raised in the G<sub>k</sub>(t)
+formula above.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p class="first"><strong>HHChannel2D</strong>
+The Hodgkin-Huxley channel2D can have the usual voltage dependent
+dynamical gates, and also gates that depend on voltage and an
+ionic concentration, as for say Ca-dependent K conductance. It has
+the properties of HHChannel above, and a few more, similar to
+in the <a class="reference external" href="http://www.genesis-sim.org/GENESIS/Hyperdoc/Manual-26.html#ss26.61">GENESIS tab2Dchannel
+reference</a>.</p>
+</li>
+<li><p class="first"><strong>CaConc</strong>
+This is a pool of Ca ions in each compartment, in a shell volume
+under the cell membrane. The dynamical Ca concentration increases
+when Ca channels open, and decays back to resting with a specified
+time constant τ. Its concentration controls Ca-dependent K channels,
+etc.</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Ca</dt>
+<dd><p class="first">Ca concentration in the pool in units mM ( i.e., mol/m<sup>3</sup>).</p>
+<blockquote class="last">
+<div><p>d[Ca<sup>2+</sup>]/dt = B × I<sub>Ca</sub> -
+[Ca<sup>2+</sup>]/τ</p>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CaBasal/Ca_base</dt>
+<dd><p class="first last">Base Ca concentration to which the Ca decays</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>tau</dt>
+<dd><p class="first last">time constant with which the Ca concentration decays to the base Ca level.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>B</dt>
+<dd><p class="first last">constant in the [Ca<sup>2+</sup>] equation above.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>thick</dt>
+<dd><p class="first last">thickness of the Ca shell within the cell membrane which is
+used to calculate B (see Chapter 19 of <a class="reference external" href="http://www.genesis-sim.org/GENESIS/iBoG/iBoGpdf/index.html">Book of GENESIS</a>.)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="neuronal-simulations-in-moosegui">
+<h3>2.4.2. Neuronal simulations in MOOSEGUI<a class="headerlink" href="#neuronal-simulations-in-moosegui" title="Permalink to this headline">¶</a></h3>
+<p>Neuronal models in various formats can be loaded and simulated in the
+<strong>MOOSE Graphical User Interface</strong>. The GUI displays the neurons in 3D,
+and allows visual selection and editing of neuronal properties. Plotting
+and visualization of activity proceeds concurrently with the simulation.
+Support for creating and editing channels, morphology and networks is
+planned for the future. MOOSEGUI uses SI units throughout.</p>
+</div>
+<div class="section" id="demos">
+<h3>2.4.3. Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first"><strong>Cerebellar granule cell</strong></p>
+<p><strong>File -&gt; Load -&gt;</strong>
+~/moose/Demos/neuroml/GranuleCell/GranuleCell.net.xml</p>
+<p>This is a single compartment Cerebellar granule cell with a variety
+of channels <a class="reference external" href="http://www.tnb.ua.ac.be/models/network.shtml">Maex, R. and De Schutter, E.,
+1997</a> (exported from
+<a class="reference external" href="http://www.neuroconstruct.org/">http://www.neuroconstruct.org/</a>). Click on its soma, and <strong>See
+children</strong> for its list of channels. Vary the Gbar of these
+channels to obtain regular firing, adapting and bursty behaviour (may
+need to increase tau of the Ca pool).</p>
+</li>
+<li><p class="first"><strong>Pyloric rhythm generator in the stomatogastric ganglion of lobster</strong></p>
+<p><strong>File -&gt; Load -&gt;</strong>
+~/moose/Demos/neuroml/pyloric/Generated.net.xml</p>
+</li>
+<li><p class="first"><strong>Purkinje cell</strong></p>
+<p><strong>File -&gt; Load -&gt;</strong>
+~/moose/Demos/neuroml/PurkinjeCell/Purkinje.net.xml</p>
+<p>This is a purely passive cell, but with extensive morphology [De
+Schutter, E. and Bower, J. M., 1994] (exported from
+<a class="reference external" href="http://www.neuroconstruct.org/">http://www.neuroconstruct.org/</a>). The channel specifications are in an
+obsolete ChannelML format which MOOSE does not support.</p>
+</li>
+<li><p class="first"><strong>Olfactory bulb subnetwork</strong></p>
+<p><strong>File -&gt; Load -&gt;</strong>
+~/moose/Demos/neuroml/OlfactoryBulb/numgloms2_seed100.0_decimated.xml</p>
+<p>This is a pruned and decimated version of a detailed network model
+of the Olfactory bulb [Gilra A. and Bhalla U., in preparation]
+without channels and synaptic connections. We hope to post the
+ChannelML specifications of the channels and synapses soon.</p>
+</li>
+<li><p class="first"><strong>All channels cell</strong></p>
+<p><strong>File -&gt; Load -&gt;</strong>
+~/moose/Demos/neuroml/allChannelsCell/allChannelsCell.net.xml</p>
+<p>This is the Cerebellar granule cell as above, but with loads of
+channels from various cell types (exported from
+<a class="reference external" href="http://www.neuroconstruct.org/">http://www.neuroconstruct.org/</a>). Play around with the channel
+properties to see what they do. You can also edit the ChannelML files
+in ~/moose/Demos/neuroml/allChannelsCell/cells_channels/ to
+experiment further.</p>
+</li>
+<li><p class="first"><strong>NeuroML python scripts</strong>
+In directory ~/moose/Demos/neuroml/GranuleCell, you can run
+python FvsI_Granule98.py which plots firing rate vs injected
+current for the granule cell. Consult this python script to see how
+to read in a NeuroML model and to set up simulations. There are ample
+snippets in ~/moose/Demos/snippets too.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="loading-modifying-saving">
+<h3>2.4.4. Loading, modifying, saving<a class="headerlink" href="#loading-modifying-saving" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="explicit-vs-implict-methods">
+<h3>2.4.5. Explicit vs. implict methods<a class="headerlink" href="#explicit-vs-implict-methods" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="integrate-and-fire-models">
+<h3>2.4.6. Integrate-and-fire models<a class="headerlink" href="#integrate-and-fire-models" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="the-hh-model">
+<h3>2.4.7. The HH model<a class="headerlink" href="#the-hh-model" title="Permalink to this headline">¶</a></h3>
+<p id="hhmodel">This is a standalone script for simulating the Hodgkin-Huxley squid
+axon experiment with a step current injection. The graphical version
+of the same is <a class="reference internal" href="#squid"><span>The Hodgkin-Huxley demo</span></a>.</p>
+</div>
+<div class="section" id="analyzing-spike-trains">
+<h3>2.4.8. Analyzing spike trains<a class="headerlink" href="#analyzing-spike-trains" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="network-models">
+<h2>2.5. Network models<a class="headerlink" href="#network-models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="connecting-two-cells-via-a-synapse">
+<h3>2.5.1. Connecting two cells via a synapse<a class="headerlink" href="#connecting-two-cells-via-a-synapse" title="Permalink to this headline">¶</a></h3>
+<p>Below is the connectivity diagram for setting up a synaptic connection
+from one neuron to another. The PulseGen object is there for
+stimulating the presynaptic cell as part of experimental setup. The
+cells are defined as single-compartments with Hodgkin-Huxley type Na+
+and K+ channels (see <span class="xref std std-ref">hhmodel</span>)</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/twoCells.png"><img alt="Two cells connected via synapse" src="_images/twoCells.png" style="width: 300.0px; height: 290.5px;" /></a>
+</div>
+</div>
+<div class="section" id="plastic-synapse-stdp">
+<h3>2.5.2. Plastic synapse: STDP<a class="headerlink" href="#plastic-synapse-stdp" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="network-with-ca-based-plasticity">
+<h3>2.5.3. Network with Ca-based plasticity<a class="headerlink" href="#network-with-ca-based-plasticity" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="providing-random-input-to-a-cell">
+<h3>2.5.4. Providing random input to a cell<a class="headerlink" href="#providing-random-input-to-a-cell" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/randomSpike.png"><img alt="Random spike input to a cell" src="_images/randomSpike.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+</div>
+<div class="section" id="recurrent-integrate-and-fire-network">
+<h3>2.5.5. Recurrent integrate-and-fire network<a class="headerlink" href="#recurrent-integrate-and-fire-network" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="recurrent-integrate-and-fire-network-with-plasticity">
+<h3>2.5.6. Recurrent integrate-and-fire network with plasticity<a class="headerlink" href="#recurrent-integrate-and-fire-network-with-plasticity" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="a-feed-forward-network-with-random-input">
+<h3>2.5.7. A feed-forward network with random input<a class="headerlink" href="#a-feed-forward-network-with-random-input" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="using-compartmental-models-in-networks">
+<h3>2.5.8. Using compartmental models in networks<a class="headerlink" href="#using-compartmental-models-in-networks" title="Permalink to this headline">¶</a></h3>
+<p><strong>Pyloric rhythm generator in the stomatogastric ganglion of lobster</strong></p>
+</div>
+</div>
+<div class="section" id="multiscale-models">
+<h2>2.6. Multiscale models<a class="headerlink" href="#multiscale-models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="single-compartment-multiscale-model">
+<h3>2.6.1. Single-compartment multiscale model<a class="headerlink" href="#single-compartment-multiscale-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="multi-compartment-multiscale-model">
+<h3>2.6.2. Multi-compartment multiscale model<a class="headerlink" href="#multi-compartment-multiscale-model" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="graphics">
+<h2>2.7. Graphics<a class="headerlink" href="#graphics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="displaying-time-series-plots">
+<h3>2.7.1. Displaying time-series plots<a class="headerlink" href="#displaying-time-series-plots" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="animation-of-values-along-an-axis">
+<h3>2.7.2. Animation of values along an axis<a class="headerlink" href="#animation-of-values-along-an-axis" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="using-moogli-widgets-to-display-a-neuron">
+<h3>2.7.3. Using MOOGLI widgets to display a neuron<a class="headerlink" href="#using-moogli-widgets-to-display-a-neuron" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="moose_builtins.html" class="btn btn-neutral float-right" title="3. MOOSE builtins" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="moose_quickstart.html" class="btn btn-neutral" title="1. Getting started with python scripting for MOOSE" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Upinder Bhalla, Niraj Dudani, Aditya Gilra, Aviral Goel, Subhasis Ray and Dilawar Singh.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
