@@ -39,3 +39,8 @@ OpenMP vs Pthreads :
    Each worker-main thread pair is controlled using a pair of semaphores, using which messages are passed in between them. 
    This optimization improved the performance of pthread-based implementation and we achived the speedups equivalent to the ones with OpenMP. 
 
+Modified files - 
+   Ksolve.h , Ksolve.cpp
+   Gsolve.h, Gsolve.cpp
+   Dsolve.h, Dsolve.cpp
+   CMakeLists.txt - to add linking flags for OpenMP and pthread parallelization.
